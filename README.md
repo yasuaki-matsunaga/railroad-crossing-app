@@ -30,9 +30,12 @@ OpenStreetMapというWEBアプリや個人のWEBサイトでは踏切の位置�
 ユーザー登録  
 ログイン  
 パスワード変更  
+メールアドレス変更  
 検索  
 地図上に踏切の位置を表示  
 踏切詳細ページ  
+いいね  
+いいね解除  
 レビュー投稿（写真投稿を含む）  
 レビュー閲覧  
 レビュー編集  
@@ -58,3 +61,6 @@ HTTParty/Faraday　API呼び出しを簡単に行うためのGem
 Carrierwave　画像をアップロードするためのGem  
 exifr　画像からexif情報を取得するためのGem  
 sorcery　ユーザー登録・ログイン・ログアウト  
+
+■ 画面遷移図  
+https://www.figma.com/design/uipeoG2C6HhMtySCGapj4A/%E3%80%90%E8%B8%8F%E5%88%87%E3%82%A2%E3%83%97%E3%83%AA%E3%80%91%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=bHWpGo2W8tUp0swy-1
