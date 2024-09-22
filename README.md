@@ -64,3 +64,6 @@ sorcery　ユーザー登録・ログイン・ログアウト
 
 ■ 画面遷移図  
 https://www.figma.com/design/uipeoG2C6HhMtySCGapj4A/%E3%80%90%E8%B8%8F%E5%88%87%E3%82%A2%E3%83%97%E3%83%AA%E3%80%91%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=bHWpGo2W8tUp0swy-1
+
+■ ER図  
+https://gyazo.com/0dd9e514992affccf15ebfa99522409a
