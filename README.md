@@ -1,4 +1,4 @@
-# graduation-project
+# railroad-crossing-app
 ■サービス概要  
 地図上から踏切を探して、レビューを投稿することができる。  
 位置情報と組み合わせて踏切スタンプラリーができる。  
