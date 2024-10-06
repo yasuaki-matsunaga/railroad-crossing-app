@@ -1,0 +1,8 @@
+{
+  "name": "railroad-crossing-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:yasuaki-matsunaga/railroad-crossing-app.git",
+  "author": "yasuaki-matsunaga <hachimitsu1993@hotmail.co.jp>",
+  "license": "MIT"
+}
