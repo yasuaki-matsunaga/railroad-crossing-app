@@ -3,6 +3,29 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.4"
 
+gem 'bootstrap', '~> 5.3.0'
+gem 'jquery-rails'
+
+gem 'sorcery', "0.16.3"
+
+gem 'rails-i18n', '~> 7.0.0'
+
+gem 'draper', '4.0.2'
+
+gem 'carrierwave', '2.2.2'
+
+gem 'pry'
+
+gem 'kaminari', "1.2.2"
+
+gem 'bootstrap5-kaminari-views'
+
+gem 'ransack', "3.2.1"
+
+gem 'config'
+
+gem 'enum_help'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.4"
 
@@ -44,6 +67,7 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
 # gem "sassc-rails"
+gem "dartsass-rails", "~> 0.4.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

@@ -1,0 +1,14 @@
+<div id="map" style="width: 100%; height: 800px;"></div>
+<script>
+  // 地図の初期設定
+  var map = L.map('map').setView([35.6895, 139.6917], 13);  // 東京の緯度経度を指定
+
+  // OSMタイルレイヤーを追加
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // マーカーの追加（必要に応じて）
+  var marker = L.marker([35.6895, 139.6917]).addTo(map)
+    .openPopup();
+</script>

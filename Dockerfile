@@ -5,6 +5,8 @@ ENV TZ Asia/Tokyo
 RUN mkdir /railroad-crossing-app
 WORKDIR /railroad-crossing-app
 
+RUN apt-get update && apt-get install -y nodejs
+
 RUN gem install bundler:2.3.17
 
 COPY Gemfile /railroad-crossing-app/Gemfile
@@ -17,4 +19,4 @@ COPY . /railroad-crossing-app/
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/dev"]
