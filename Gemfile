@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.4"
 
+gem 'pg'
+
 gem 'bootstrap', '~> 5.3.0'
 gem 'jquery-rails'
 
@@ -31,9 +33,6 @@ gem "rails", "~> 7.0.8", ">= 7.0.8.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-
-# Use mysql as the database for Active Record
-gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"

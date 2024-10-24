@@ -210,7 +210,6 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
-    mysql2 (0.5.6)
     net-http (0.4.1)
       uri
     net-imap (0.4.16)
@@ -239,6 +238,7 @@ GEM
     parser (3.3.5.0)
       ast (~> 2.4.1)
       racc
+    pg (1.5.8)
     popper_js (2.11.8)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -414,7 +414,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari (= 1.2.2)
-  mysql2 (~> 0.5)
+  pg
   pry
   pry-byebug
   puma (~> 5.0)
