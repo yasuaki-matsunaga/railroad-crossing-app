@@ -192,6 +192,11 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
+    leaflet-markercluster-rails (0.7.0)
+      railties (>= 3.1)
+    leaflet-rails (1.9.5)
+      actionpack (>= 4.2.0)
+      railties (>= 4.2.0)
     logger (1.6.1)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -418,6 +423,8 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari (= 1.2.2)
+  leaflet-markercluster-rails
+  leaflet-rails
   pg
   pry
   pry-byebug

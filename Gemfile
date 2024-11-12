@@ -28,6 +28,10 @@ gem 'config'
 
 gem 'enum_help'
 
+gem 'leaflet-rails'
+
+gem 'leaflet-markercluster-rails'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.4"
 

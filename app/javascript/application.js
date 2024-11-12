@@ -2,5 +2,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require leaflet.markercluster
 import "@hotwired/turbo-rails"
 import "controllers"
