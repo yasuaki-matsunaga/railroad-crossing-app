@@ -21,6 +21,6 @@
 
   // マーカーの追加（必要に応じて）
   <% @crossings.each do |crossing| %>
-    var marker = L.marker([<%= crossing.latitude %>, <%= crossing.longitude %>]).addTo(map).bindPopup("<%= crossing.latitude %> / <%= crossing.longitude %>").openPopup();
+    var marker = L.marker([<%= crossing.latitude %>, <%= crossing.longitude %>]).addTo(map).bindPopup('<%= link_to "詳細", crossing_path(crossing.crossing_id) %>').openPopup();
   <% end %>
 </script>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h2>新規投稿</h2>
+      <%= form_with model: @post do |f| %>
+      <div class="mb-3">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control", rows: "10" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :image %>
+        <%= f.file_field :image, class: "form-control", accept: 'image/*' %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+      <%= f.submit nil, class: "btn btn-primary" %>
+    <% end %>
+    </div>
+  </div>
+</div>
