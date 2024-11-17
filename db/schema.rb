@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_05_053430) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_15_213243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_05_053430) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "crossing_id"
+    t.string "title", null: false
+    t.text "body", null: false
+    t.string "crossing_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "prefectures", primary_key: "prefecture_id", id: :serial, force: :cascade do |t|
     t.string "prefecture_name", null: false
     t.datetime "created_at", null: false
@@ -77,4 +88,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_05_053430) do
   add_foreign_key "crossing_prefectures", "prefectures", primary_key: "prefecture_id"
   add_foreign_key "crossing_railways", "crossings", primary_key: "crossing_id"
   add_foreign_key "crossing_railways", "railways", primary_key: "railway_id"
+  add_foreign_key "posts", "crossings", primary_key: "crossing_id"
+  add_foreign_key "posts", "users"
 end

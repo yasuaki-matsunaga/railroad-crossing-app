@@ -6,4 +6,6 @@ class Crossing < ApplicationRecord
   has_many :linked_prefectures, through: :crossing_prefectures, source: :prefecture
   has_many :linked_cities, through: :crossing_cities, source: :city
   has_many :linked_railways, through: :crossing_railways, source: :railway
+  
+  has_many :posts, dependent: :destroy, foreign_key: :crossing_id, primary_key: :crossing_id
 end
