@@ -2,16 +2,14 @@ class CrossingsController < ApplicationController
   skip_before_action :require_login, only: %i[show]
 
   def show
-    @crossing = Crossing.find(params[:id])
+    @crossing = Crossing.includes(:linked_prefectures, :linked_cities, :linked_railways, :posts).find(params[:id])
 
-    prefecture_id = CrossingPrefecture.find_by(crossing_id: @crossing.crossing_id).prefecture_id
-    @prefecture = Prefecture.find(prefecture_id)
+    @prefecture = @crossing.linked_prefectures.first
+    @city = @crossing.linked_cities.first
+    @railway = @crossing.linked_railways.first
 
-    city_id = CrossingCity.find_by(crossing_id: @crossing.crossing_id).city_id
-    @city = City.find(city_id)
-
-    railway_id = CrossingRailway.find_by(crossing_id: @crossing.crossing_id).railway_id
-    @railway = Railway.find(railway_id)
+    # crossingに該当するpostsをすべて取得
+    @posts = @crossing.posts.order(created_at: :desc)
   end
 
 end

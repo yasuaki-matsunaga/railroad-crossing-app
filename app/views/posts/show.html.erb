@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="crossing-info">
+    <h2><%= @crossing.crossing_name %></h2>
+    <h4><%= @crossing.latitude %> / <%= @crossing.longitude %></h4>
+    <h4><%= @prefecture.prefecture_name %></h4>
+    <h4><%= @city.city_name %></h4>
+    <h4><%= @railway.railway_name %></h4>
+  </div>
+  <div class="post-area">
+    <div class="crossing-image">
+      <%= image_tag @post.crossing_image.url, width: "500" %>
+    </div>
+    <div class="post-title">
+      <h3><%= @post.title %></h3>
+    </div>
+    <div class="post-body">
+      <p><%= @post.body %></p>
+    </div>
+  </div>
+</div>
