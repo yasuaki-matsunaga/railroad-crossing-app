@@ -11,13 +11,18 @@
   </div>
   <%# 該当するpostデータをループさせてcardを表示する %>
   <div class="post-index my-4">
-    <% @posts.each do |post| %>
-      <div class="card" style="width: 18rem;">
-        <%= image_tag post.crossing_image.url, class: "card-img-top" %>
-        <div class="card-body">
-          <%= link_to post.title, crossing_post_path(post.crossing_id, post.id), class: 'card-title' %>
+    <div class="d-flex">
+      <% @posts.each do |post| %>
+        <div class="mb-3 px-3">
+          <div class="card" style="width: 18rem;">
+            <%= image_tag post.crossing_image.url, class: "card-img-top" %>
+            <div class="card-body">
+              <%= link_to post.title, crossing_post_path(post.crossing_id, post.id), class: 'card-title' %>
+              <p><%= post.user.name %></p>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

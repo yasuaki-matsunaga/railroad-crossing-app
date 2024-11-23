@@ -8,8 +8,8 @@ class CrossingsController < ApplicationController
     @city = @crossing.linked_cities.first
     @railway = @crossing.linked_railways.first
 
-    # crossingに該当するpostsをすべて取得
     @posts = @crossing.posts.order(created_at: :desc)
+
   end
 
 end
