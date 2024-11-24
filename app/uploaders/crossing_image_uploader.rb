@@ -2,12 +2,11 @@ class CrossingImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-  #if Rails.env.production?
-  include Cloudinary::CarrierWave
-    #storage :cloudinary
-  #else
-    #storage :file
-  #end
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+  else
+    storage :file
+  end
   # Choose what kind of storage to use for this uploader:
   # storage :fog
 
@@ -23,7 +22,7 @@ class CrossingImageUploader < CarrierWave::Uploader::Base
 
   def default_url
     if Rails.env.production?
-      "https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/v1/sample.jpg"
+      "https://res.cloudinary.com/hlbxykiuq/image/upload/v1/sample.jpg"
     else
       'sample.jpg' # ローカル環境用
     end
