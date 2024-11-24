@@ -2,11 +2,11 @@ class CrossingImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-  if Rails.env.production?
-    include Cloudinary::CarrierWave
-  else
-    storage :file
-  end
+  #if Rails.env.production?
+  #  include Cloudinary::CarrierWave
+  #else
+  storage :file
+  #end
   # Choose what kind of storage to use for this uploader:
   # storage :fog
 
