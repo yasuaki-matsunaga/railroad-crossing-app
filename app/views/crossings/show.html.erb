@@ -11,14 +11,26 @@
   </div>
   <%# 該当するpostデータをループさせてcardを表示する %>
   <div class="post-index my-4">
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
       <% @posts.each do |post| %>
-        <div class="mb-3 px-3">
+        <div class="mb-3 px-3" id="post-id-<%= post.id %>">
           <div class="card" style="width: 18rem;">
             <%= image_tag post.crossing_image.url, class: "card-img-top" %>
             <div class="card-body">
               <%= link_to post.title, crossing_post_path(post.crossing_id, post.id), class: 'card-title' %>
-              <p><%= post.user.name %></p>
+              <div class="d-flex">
+                <p><%= post.user.name %></p>
+                <% if current_user.own?(post) %>
+                  <div class='ms-auto'>
+                    <%= link_to edit_crossing_post_path(post.crossing_id, post.id), class: "btn btn-link p-0", id: "button-edit-#{post.id}" do %>
+                      <i class="bi bi-pen-fill"></i>
+                    <% end %>
+                    <%= link_to crossing_post_path(post.crossing_id, post.id), class: "btn btn-link p-0", id: "button-delete-#{post.id}", data: { turbo_method: :delete } do %>
+                      <i class="bi bi-trash3-fill"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

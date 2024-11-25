@@ -6,12 +6,27 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def edit
+    @post = current_user.posts.find(params[:id])
+    @crossing = Crossing.find(params[:crossing_id])
+  end
+
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to crossing_path(params[:crossing_id])
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    @crossing = Crossing.find(params[:crossing_id])
+    if @post.update(post_params)
+      redirect_to crossing_post_path(@crossing, @post)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -23,6 +38,12 @@ class PostsController < ApplicationController
     @railway = @crossing.linked_railways.first
 
     @post = Post.find(params[:id])
+  end
+
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy!
+    redirect_to crossing_posts_path(@post.crossing_id), status: :see_other
   end
 
   private
