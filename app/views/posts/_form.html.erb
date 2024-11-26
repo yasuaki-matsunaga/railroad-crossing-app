@@ -1,0 +1,16 @@
+<%= form_with model: post, url: url, method: method do |f| %>
+  <div class="mb-3">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control", rows: "10" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :crossing_image %>
+    <%= f.file_field :crossing_image, class: "form-control", accept: 'image/*' %>
+    <%= f.hidden_field :crossing_image_cache %>
+  </div>
+  <%= f.submit nil, class: "btn btn-primary" %>
+<% end %>

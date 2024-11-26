@@ -32,11 +32,6 @@ class PostsController < ApplicationController
 
   def show
     @crossing = Crossing.includes(:linked_prefectures, :linked_cities, :linked_railways, :posts).find(params[:crossing_id])
-
-    @prefecture = @crossing.linked_prefectures.first
-    @city = @crossing.linked_cities.first
-    @railway = @crossing.linked_railways.first
-
     @post = Post.find(params[:id])
   end
 
