@@ -2,9 +2,16 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      post: 投稿
     attributes:
       user:
         email: メールアドレス
         name: ユーザーネーム
         password: パスワード
         password_confirmation: パスワード確認
+        created_at: 作成日時
+      post:
+        title: タイトル
+        body: 本文
+        crossing_image: フミキリフォト
+        created_at: 作成日時

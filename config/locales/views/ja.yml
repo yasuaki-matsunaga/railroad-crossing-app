@@ -7,16 +7,28 @@ ja:
     label:
       email: メールアドレス
       password: パスワード
+  defaults:
+    create: 作成
+    post: 投稿
+    delete_confirm: 削除しますか？
+    show: 詳細
+    edit: 編集
+    delete: 削除
+    flash_message:
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成出来ませんでした"
+      require_login: ログインしてください
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新出来ませんでした"
+      deleted: "%{item}を削除しました"
   user_sessions:
     new:
       title: ログイン
       login: ログイン
       to_register_page: 登録ページへ
       password_forget: パスワードをお忘れの方はこちら
-  users:
-    new:
-      title: ユーザー登録
-      to_login_page: ログインページへ
-  header:
-    login: ログイン
-    logout: ログアウト
+    create:
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
