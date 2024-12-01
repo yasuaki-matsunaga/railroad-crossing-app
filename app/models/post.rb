@@ -5,5 +5,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :crossing, primary_key: :crossing_id, foreign_key: :crossing_id
 
+  has_many :comments, dependent: :destroy
+
   mount_uploader :crossing_image, CrossingImageUploader
 end

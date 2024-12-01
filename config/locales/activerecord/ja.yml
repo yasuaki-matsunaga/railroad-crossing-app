@@ -15,3 +15,5 @@ ja:
         body: 本文
         crossing_image: フミキリフォト
         created_at: 作成日時
+      comment:
+        body: コメント

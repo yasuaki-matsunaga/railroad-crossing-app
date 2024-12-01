@@ -1,0 +1,9 @@
+<div class="row mb-3" id="comment-form">
+  <div class="col-lg-12">
+    <%= form_with model: [crossing, post, comment], url: crossing_post_comments_path(crossing.crossing_id, post.id), local: false do |f| %>
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "form-control mb-3", row: "4", placeholder: Comment.human_attribute_name(:body) %>
+      <%= f.submit t('defaults.post'), class: "btn btn-warning" %>
+    <% end %>
+  </div>
+</div>

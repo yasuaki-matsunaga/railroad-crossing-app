@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :crossings, only: %i[show] do
-    resources :posts, only: %i[new create show edit update destroy]
+    resources :posts, only: %i[new create show edit update destroy] do
+      resources :comments, only: %i[create edit destroy]
+    end
   end
 end
