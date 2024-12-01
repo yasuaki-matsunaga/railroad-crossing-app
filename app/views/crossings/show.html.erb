@@ -14,7 +14,7 @@
               <%= link_to post.title, crossing_post_path(post.crossing_id, post.id), class: 'card-title' %>
               <div class="d-flex">
                 <p><%= post.user.name %></p>
-                <% if current_user.own?(post) %>
+                <% if current_user && current_user.own?(post) %>
                   <div class='ms-auto'>
                     <%= link_to edit_crossing_post_path(post.crossing_id, post.id), class: "btn btn-link p-0", id: "button-edit-#{post.id}" do %>
                       <i class="bi bi-pen-fill"></i>
