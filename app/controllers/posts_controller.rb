@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy!
-    redirect_to crossing_posts_path(@post.crossing_id), status: :see_other, success: t('defaults.flash_message.deleted', item: Post.model_name.human)
+    redirect_to crossing_path(@post.crossing_id), status: :see_other, success: t('defaults.flash_message.deleted', item: Post.model_name.human)
   end
 
   private
