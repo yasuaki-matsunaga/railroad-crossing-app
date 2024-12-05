@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :require_login, only: %i[new create]
 
+  def index
+    @posts = Post.all.order(created_at: :desc)
+  end
+
   def new
     @crossing = Crossing.find(params[:crossing_id])
     @post = Post.new

@@ -4,31 +4,5 @@
     <%= link_to '投稿', new_crossing_post_path(@crossing.crossing_id), class: 'btn btn-warning' %>
   </div>
   <%# 投稿一覧 %>
-  <div class="post-index my-4">
-    <div class="d-flex flex-wrap">
-      <% @posts.each do |post| %>
-        <div class="mb-3 px-3" id="post-id-<%= post.id %>">
-          <div class="card" style="width: 18rem;">
-            <%= image_tag post.crossing_image.url, class: "card-img-top" %>
-            <div class="card-body">
-              <%= link_to post.title, crossing_post_path(post.crossing_id, post.id), class: 'card-title' %>
-              <div class="d-flex">
-                <p><%= post.user.name %></p>
-                <% if current_user && current_user.own?(post) %>
-                  <div class='ms-auto'>
-                    <%= link_to edit_crossing_post_path(post.crossing_id, post.id), class: "btn btn-link p-0", id: "button-edit-#{post.id}" do %>
-                      <i class="bi bi-pen-fill"></i>
-                    <% end %>
-                    <%= link_to crossing_post_path(post.crossing_id, post.id), class: "btn btn-link p-0", id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？' } do %>
-                      <i class="bi bi-trash3-fill"></i>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'shared/post', posts: @posts %>
 </div>

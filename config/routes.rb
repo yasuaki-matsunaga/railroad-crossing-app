@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :posts, only: %i[index]
+
   resources :crossings, only: %i[show] do
     resources :posts, only: %i[new create show edit update destroy] do
       resources :comments, only: %i[create edit destroy]
