@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new create]
+  before_action :require_login, only: %i[new create edit update destroy]
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).includes(crossing: [:linked_prefectures, :linked_cities, :linked_railways], user:[]).order(created_at: :desc)
   end
 
   def new

@@ -1,11 +1,11 @@
 <div class="position-relative">
   <div class="search_form position-absolute top-0 start-50 translate-middle-x z-1">
     <%= form_with model: @q, scope: :q, url: root_path, method: :get, class: 'd-flex justify-content-evenly p-2' do |f| %>
-    <%= f.select :linked_prefectures_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow m-2' %>
-    <%= f.select :linked_cities_city_id_eq, City.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow m-2' %>
-    <%= f.select :linked_railways_railway_id_eq, Railway.pluck(:railway_name, :railway_id), { include_blank: '路線' }, class: 'form-select shadow m-2' %>
-    <%= f.submit '検索', class: 'btn btn-warning shadow m-2' %>
-  <% end %>
+      <%= f.select :linked_prefectures_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow m-2' %>
+      <%= f.select :linked_cities_city_id_eq, City.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow m-2' %>
+      <%= f.select :linked_railways_railway_id_eq, Railway.pluck(:railway_name, :railway_id), { include_blank: '路線' }, class: 'form-select shadow m-2' %>
+      <%= f.submit '検索', class: 'btn btn-warning shadow m-2' %>
+    <% end %>
   </div>
   <div class="z-0" id="map" style="width: 100%; height: 800px;"></div>
 </div>
