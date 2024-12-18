@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_30_041808) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_17_232929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_30_041808) do
     t.string "city_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -30,21 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_30_041808) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "crossing_cities", id: false, force: :cascade do |t|
-    t.bigint "crossing_id"
-    t.integer "city_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "crossing_prefectures", id: false, force: :cascade do |t|
-    t.bigint "crossing_id"
-    t.integer "prefecture_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "crossing_railways", id: false, force: :cascade do |t|
+  create_table "crossing_railways", force: :cascade do |t|
     t.bigint "crossing_id"
     t.bigint "railway_id"
     t.datetime "created_at", null: false
@@ -57,6 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_30_041808) do
     t.string "crossing_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "city_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -92,14 +80,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_30_041808) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "cities", "prefectures", primary_key: "prefecture_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "crossing_cities", "cities", primary_key: "city_id"
-  add_foreign_key "crossing_cities", "crossings", primary_key: "crossing_id"
-  add_foreign_key "crossing_prefectures", "crossings", primary_key: "crossing_id"
-  add_foreign_key "crossing_prefectures", "prefectures", primary_key: "prefecture_id"
   add_foreign_key "crossing_railways", "crossings", primary_key: "crossing_id"
   add_foreign_key "crossing_railways", "railways", primary_key: "railway_id"
+  add_foreign_key "crossings", "cities", primary_key: "city_id"
   add_foreign_key "posts", "crossings", primary_key: "crossing_id"
   add_foreign_key "posts", "users"
 end

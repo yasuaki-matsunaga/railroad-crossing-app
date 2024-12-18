@@ -1,7 +1,7 @@
 <div class="crossing-info">
   <h2><%= crossing.crossing_name %></h2>
   <h4><%= crossing.latitude %> / <%= crossing.longitude %></h4>
-  <h4><%= crossing.linked_prefectures.first.prefecture_name %></h4>
-  <h4><%= crossing.linked_cities.first.city_name %></h4>
+  <h4><%= crossing.city.prefecture.prefecture_name %></h4>
+  <h4><%= crossing.city.city_name %></h4>
   <h4><%= crossing.linked_railways.first.railway_name %></h4>
 </div>

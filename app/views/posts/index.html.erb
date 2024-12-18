@@ -2,8 +2,8 @@
   <h2>投稿一覧</h2>
   <div class="search_form">
     <%= form_with model: @q, scope: :q, url: posts_path, method: :get, class: 'd-flex justify-content-evenly p-2' do |f| %>
-      <%= f.select :crossing_linked_prefectures_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow m-2' %>
-      <%= f.select :crossing_linked_cities_city_id_eq, City.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow m-2' %>
+      <%= f.select :crossing_city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow m-2' %>
+      <%= f.select :crossing_city_city_id_eq, City.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow m-2' %>
       <%= f.select :crossing_linked_railways_railway_id_eq, Railway.pluck(:railway_name, :railway_id), { include_blank: '路線' }, class: 'form-select shadow m-2' %>
       <%= f.search_field :user_name_or_title_or_body_cont, class: 'form-control shadow m-2', placeholder: '検索ワード' %>
       <%= f.submit '検索', class: 'btn btn-warning shadow m-2' %>

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(crossing: [:linked_prefectures, :linked_cities, :linked_railways], user:[]).order(created_at: :desc)
+    @posts = @q.result(distinct: true).includes(crossing: [city: [:prefecture], linked_railways:[]], user:[]).order(created_at: :desc)
   end
 
   def new
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @crossing = Crossing.includes(:linked_prefectures, :linked_cities, :linked_railways, :posts).find(params[:crossing_id])
+    @crossing = Crossing.includes(city: [:prefecture], linked_railways:[], posts:[]).find(params[:crossing_id])
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
