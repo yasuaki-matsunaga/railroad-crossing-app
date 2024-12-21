@@ -1,7 +1,8 @@
 class CrossingImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+  process resize_and_pad: [500, 500, "transparent"]
 
   if Rails.env.production?
     storage :fog

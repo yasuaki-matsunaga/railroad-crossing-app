@@ -6,6 +6,7 @@ ruby "3.1.4"
 gem 'pg'
 
 gem 'bootstrap', '~> 5.3.0'
+
 gem 'jquery-rails'
 
 gem 'sorcery', "0.16.3"
@@ -35,6 +36,10 @@ gem 'leaflet-markercluster-rails'
 gem 'dotenv-rails'
 
 gem 'fog-aws'
+
+gem 'image_processing', '~> 1.2'
+
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.4"

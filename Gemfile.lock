@@ -447,12 +447,14 @@ DEPENDENCIES
   factory_bot_rails
   faker
   fog-aws
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   jquery-rails
   kaminari (= 1.2.2)
   leaflet-markercluster-rails
   leaflet-rails
+  mini_magick
   pg
   pry
   pry-byebug
