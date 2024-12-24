@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :crossings, only: %i[show] do
     resources :posts, only: %i[new create show edit update destroy] do
       resources :comments, only: %i[create edit destroy]
+      collection do
+        get :favorites
+      end
     end
   end
+  resources :favorites, only: %i[create destroy]
 end

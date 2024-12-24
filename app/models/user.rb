@@ -9,9 +9,23 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
 
   def own?(object)
     id == object&.user_id
+  end
+
+  def favorite(post)
+    favorite_posts << post
+  end
+
+  def unfavorite(post)
+    favorite_posts.delete(post)
+  end
+
+  def favorite?(post)
+    favorite_posts.include?(post)
   end
 
 end

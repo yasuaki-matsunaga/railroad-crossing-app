@@ -1,0 +1,5 @@
+<% if current_user.favorite?(post) %>
+  <%= render 'favorites/unfavorite', post: post, crossing: crossing %>
+<% else %>
+  <%= render 'favorites/favorite', post: post, crossing: crossing %>
+<% end %>

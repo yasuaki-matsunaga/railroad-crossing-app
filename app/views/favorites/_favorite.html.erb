@@ -1,0 +1,3 @@
+<%= link_to favorites_path(post_id: post.id, crossing_id: crossing.crossing_id), id: "favorite-button-for-post-#{post.id}", data: { turbo_method: :post } do %>
+  <i class="bi bi-star"></i>
+<% end%>

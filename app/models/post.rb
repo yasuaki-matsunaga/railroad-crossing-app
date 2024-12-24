@@ -6,6 +6,11 @@ class Post < ApplicationRecord
   belongs_to :crossing, primary_key: :crossing_id, foreign_key: :crossing_id
 
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 
   mount_uploader :crossing_image, CrossingImageUploader
 end

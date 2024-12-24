@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   def show
     @crossing = Crossing.includes(city: [:prefecture], linked_railways:[], posts:[]).find(params[:crossing_id])
     @post = Post.find(params[:id])
+    @favorites = @post.favorites
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
   end
