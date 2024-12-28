@@ -1,7 +1,25 @@
-<div class="crossing-info">
-  <h2><%= crossing.crossing_name %></h2>
-  <h4><%= crossing.latitude %> / <%= crossing.longitude %></h4>
-  <h4><%= crossing.city.prefecture.prefecture_name %></h4>
-  <h4><%= crossing.city.city_name %></h4>
-  <h4><%= crossing.linked_railways.first.railway_name %></h4>
+<div class="d-flex justify-content-between mb-5">
+  <div class="crossing-info">
+    <h2><%= crossing.crossing_name %></h2>
+    <h4>
+      <%= link_to "#{crossing.latitude} / #{crossing.longitude}", "https://www.google.com/maps?q=#{crossing.latitude},#{crossing.longitude}", target: "_blank", rel: "noopener noreferrer" %>
+    </h4>
+    <h4><%= crossing.city.prefecture.prefecture_name %></h4>
+    <h4><%= crossing.city.city_name %></h4>
+    <h4><%= crossing.linked_railways.first.railway_name %></h4>
+  </div>
+  <div class="z-0" id="map" style="width: 65%; height: 250px;"></div>
 </div>
+
+
+<script>
+  // 地図の初期設定
+  var map = L.map('map').setView([<%= crossing.latitude %>, <%= crossing.longitude %>], 13);  // 東京の緯度経度を指定
+
+  // OSMタイルレイヤーを追加
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var marker = L.marker([<%= crossing.latitude %>, <%= crossing.longitude %>]).addTo(map);
+</script>
