@@ -13,4 +13,6 @@ class Post < ApplicationRecord
   end
 
   mount_uploader :crossing_image, CrossingImageUploader
+
+  acts_as_taggable_on :tags
 end

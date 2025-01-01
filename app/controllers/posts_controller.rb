@@ -4,6 +4,10 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(crossing: [city: [:prefecture], linked_railways:[]], user:[]).order(created_at: :desc)
+    @tags = Post.tag_counts_on(:tags).most_used(20)
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def new
@@ -40,6 +44,7 @@ class PostsController < ApplicationController
   def show
     @crossing = Crossing.includes(city: [:prefecture], linked_railways:[], posts:[]).find(params[:crossing_id])
     @post = Post.find(params[:id])
+    @tags = @post.tag_counts_on(:tags)
     @favorites = @post.favorites
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
@@ -54,6 +59,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :crossing_image, :crossing_image_cache).merge(crossing_id: params[:crossing_id])
+    params.require(:post).permit(:title, :body, :crossing_image, :crossing_image_cache, :tag_list).merge(crossing_id: params[:crossing_id])
   end
 end

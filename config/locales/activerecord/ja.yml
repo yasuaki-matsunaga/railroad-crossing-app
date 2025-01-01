@@ -13,6 +13,7 @@ ja:
       post:
         title: タイトル
         body: 本文
+        tag_list: タグ
         crossing_image: フミキリフォト
         created_at: 作成日時
       comment:

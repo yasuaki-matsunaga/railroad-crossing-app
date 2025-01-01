@@ -41,6 +41,8 @@ gem 'image_processing', '~> 1.2'
 
 gem 'mini_magick'
 
+gem 'acts-as-taggable-on'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.4"
 
