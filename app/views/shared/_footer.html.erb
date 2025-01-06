@@ -1,8 +1,13 @@
 <footer id='footer' class='footer-bottom'>
     <div class='row'>
-      <div class='col-sm-6 col-12'>
+      <div class='col-12 d-flex justify-content-between'>
         <div class='copyright p-2'>
           <p>Yasuaki Matsunaga portfolio 2024</p>
+        </div>
+        <div class='pages p-2'>
+          <%= link_to '使い方', page_path('how_to_use'), class: 'p-2' %>
+          <%= link_to '利用規約', page_path('service_terms'), class: 'p-2' %>
+          <%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'p-2' %>
         </div>
       </div>
     </div>
