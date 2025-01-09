@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   validates :body, length: { maximum: 65_535 }
 
   belongs_to :user
-  belongs_to :crossing, primary_key: :crossing_id, foreign_key: :crossing_id
+  belongs_to :crossing, primary_key: :crossing_id, foreign_key: :crossing_id, inverse_of: :posts
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

@@ -9,8 +9,8 @@ class CrossingImageUploader < CarrierWave::Uploader::Base
   else
     storage :file
   end
-  
-  #end
+
+  # end
   # Choose what kind of storage to use for this uploader:
   # storage :fog
 

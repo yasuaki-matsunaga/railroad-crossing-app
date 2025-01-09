@@ -3,18 +3,18 @@ class PasswordResetsController < ApplicationController
 
   def new; end
 
-  def create
-    @user = User.find_by(email: params[:email])
-    # @user&.はif @userと機能的には同じ
-    @user&.deliver_reset_password_instructions!
-    redirect_to login_path, success: t('.success')
-  end
-
   def edit
     @token = params[:id]
     # load_from_reset_password_token→モデルからトークンを探し、トークンが見つかり且つ有効であればユーザーを返す。
     @user = User.load_from_reset_password_token(params[:id])
     not_authenticated if @user.blank?
+  end
+
+  def create
+    @user = User.find_by(email: params[:email])
+    # @user&.はif @userと機能的には同じ
+    @user&.deliver_reset_password_instructions!
+    redirect_to login_path, success: t('.success')
   end
 
   def update

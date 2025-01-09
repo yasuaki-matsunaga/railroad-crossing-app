@@ -1,12 +1,12 @@
 class MapPagesController < ApplicationController
   skip_before_action :require_login, only: %i[top]
-  
+
   def top
     @q = Crossing.ransack(params[:q])
     if params[:q].blank?
-      @crossings = []  # params[:q]が空なら、検索結果は空
+      @crossings = [] # params[:q]が空なら、検索結果は空
     else
-      @crossings = @q.result(distinct: true).includes(city: [:prefecture], linked_railways:[])
+      @crossings = @q.result(distinct: true).includes(city: [:prefecture], linked_railways: [])
     end
   end
 end

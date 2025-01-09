@@ -28,5 +28,4 @@ class User < ApplicationRecord
   def favorite?(post)
     favorite_posts.include?(post)
   end
-
 end
