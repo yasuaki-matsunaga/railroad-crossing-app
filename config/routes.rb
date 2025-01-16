@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :password_resets, only: %i[new create edit update]
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
   resources :posts, only: %i[index]
@@ -20,4 +20,6 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only: %i[create destroy]
+
+  resources :contacts, only: %i[new create]
 end
