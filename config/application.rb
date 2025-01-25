@@ -26,5 +26,7 @@ module RailroadCrossingApp
     end
 
     config.i18n.default_locale = :ja
+
+    config.action_controller.raise_on_open_redirects = false #この設定は削除したい
   end
 end

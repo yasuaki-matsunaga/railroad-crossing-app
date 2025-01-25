@@ -8,6 +8,7 @@ db_data/
 .DS_Store
 public/uploads/post/
 .env
+client_secret_270655054725-eb4ce711it0tfr5mihlhhgk993tlvghb.apps.googleusercontent.com.json
 
 # Ignore bundler config.
 /.bundle
@@ -37,3 +38,7 @@ public/uploads/post/
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

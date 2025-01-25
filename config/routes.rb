@@ -5,8 +5,13 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
+  
+  post 'oauth/callback' => 'oauths#callback'
+  get 'oauth/callback' => 'oauths#callback'
+  get 'oauth/:provider' => 'oauths#oauth', :as => :auth_at_provider
 
   resources :password_resets, only: %i[new create edit update]
+  resources :contacts, only: %i[new create]
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
   resources :posts, only: %i[index]
@@ -19,7 +24,5 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :favorites, only: %i[create destroy]
-
-  resources :contacts, only: %i[new create]
+  resources :favorites, only: %i[create destroy]  
 end
