@@ -246,6 +246,8 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    meta-tags (2.22.1)
+      actionpack (>= 6.0.0, < 8.1)
     method_source (1.1.0)
     mime-types (3.6.0)
       logger
@@ -479,6 +481,7 @@ DEPENDENCIES
   leaflet-markercluster-rails
   leaflet-rails
   letter_opener_web (~> 3.0)
+  meta-tags
   mini_magick
   pg
   pry
