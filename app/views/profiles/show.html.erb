@@ -1,0 +1,6 @@
+<div class="container">
+  <p>ユーザーネーム：<%= @user.name %></p>
+  <p>メールアドレス：<%= @user.email %></p>
+  <%= link_to 'プロフィール編集', edit_profile_path %>
+  <%= link_to 'パスワード変更', new_password_reset_path %>
+</div>
