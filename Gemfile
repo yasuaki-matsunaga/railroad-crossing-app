@@ -49,6 +49,12 @@ gem 'redcarpet'
 
 gem 'meta-tags'
 
+gem 'geokit'
+
+gem 'geokit-rails'
+
+gem 'gon'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.4"
 

@@ -6,21 +6,37 @@
       <%= f.select :linked_railways_railway_id_eq, Railway.pluck(:railway_name, :railway_id), { include_blank: '路線' }, class: 'form-select shadow m-2' %>
       <%= f.submit '検索', class: 'btn btn-warning shadow m-2' %>
     <% end %>
+    <div class="current-location">
+      <button id="get-location-btn" class="btn btn-primary">近くのフミキリ</button>
+    </div>
   </div>
   <div class="z-0" id="map" style="width: 100%; height: 800px;"></div>
 </div>
 
 <script>
-  // 地図の初期設定
-  var map = L.map('map').setView([35.6895, 139.6917], 13);  // 東京の緯度経度を指定
+//OpenStreetMapの表示
+  var map = L.map('map').setView([35.6895, 139.6917], 13);  //東京
 
-  // OSMタイルレイヤーを追加
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  // マーカーの追加（必要に応じて）
   <% @crossings.each do |crossing| %>
     var marker = L.marker([<%= crossing.latitude %>, <%= crossing.longitude %>]).addTo(map).bindPopup('<%= link_to "詳細", crossing_path(crossing.crossing_id) %>').openPopup();
   <% end %>
+
+//現在地の取得と反映
+  document.getElementById("get-location-btn").onclick = function(){
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  };
+
+  function successCallback(position){
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    window.location.href = `/?latitude=${latitude}&longitude=${longitude}`;
+  };
+
+  function errorCallback(error){
+      alert("位置情報が取得できませんでした");
+  };
 </script>
