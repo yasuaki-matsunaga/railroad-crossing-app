@@ -1,10 +1,15 @@
 <div class="position-relative">
   <div class="search_form position-absolute top-0 start-50 translate-middle-x z-1">
     <%= form_with model: @q, scope: :q, url: root_path, method: :get, class: 'd-flex justify-content-evenly p-2' do |f| %>
-      <%= f.select :city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow m-2' %>
-      <%= f.select :city_city_id_eq, City.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow m-2' %>
+      <%= f.select :city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow m-2', id: 'select-prefecture' %>
+      <%= f.select :city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow m-2', id: 'select-city' %>
       <%= f.select :linked_railways_railway_id_eq, Railway.pluck(:railway_name, :railway_id), { include_blank: '路線' }, class: 'form-select shadow m-2' %>
       <%= f.submit '検索', class: 'btn btn-warning shadow m-2' %>
+      <% Prefecture.all.each do |prefecture| %>
+        <template id="city-of-prefecture<%= prefecture.prefecture_id %>">
+          <%= f.select :city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow m-2', id: 'select-city' %>
+        </template>
+      <% end %>
     <% end %>
     <div class="current-location">
       <button id="get-location-btn" class="btn btn-primary">近くのフミキリ</button>
@@ -39,4 +44,37 @@
   function errorCallback(error){
       alert("位置情報が取得できませんでした");
   };
+
+// 取得したテキストをhtmlに変換する関数
+  function stringToHTML(str) {
+    var dom = document.createElement('div');
+    dom.innerHTML = str;
+    return dom.firstElementChild;
+  };
+
+//検索セレクトボックスを動的に変化させる
+  document.addEventListener('turbo:load', function () {
+    const selectPrefecture = document.getElementById("select-prefecture");
+    const defaultCitySelect = `<select class="form-select shadow m-2" id="select-city" name="q[city_city_id_eq]">
+    <option value>市町村</option>
+    </select>`;
+
+    selectPrefecture.addEventListener('change', function() {
+      if (selectPrefecture.value !== '') {
+        const selectCity = document.getElementById("select-city");
+        selectCity.remove();
+
+        // 選択されたカテゴリーに応じたHTMLを挿入
+        let selectedTemplate = document.querySelector(`#city-of-prefecture${selectPrefecture.value}`);
+        selectPrefecture.after(stringToHTML(selectedTemplate.innerHTML));
+
+      } else {
+        const selectCity = document.getElementById("select-city");
+        // サブカテゴリー選択用のセレクトボックスを削除
+        selectCity.remove();
+        // ダミーのセレクトボックスを挿入
+        selectPrefecture.after(stringToHTML(defaultCitySelect));
+      };
+    });
+  });
 </script>

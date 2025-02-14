@@ -15,15 +15,5 @@ class MapPagesController < ApplicationController
         @crossings = @q.result(distinct: true).includes(city: [:prefecture], linked_railways: [])
       end
     end
-
-    #@q = Crossing.ransack(params[:q])
-
-    #if params[:q].blank?
-    #  @crossings = [] # params[:q]が空なら、検索結果は空
-    #elsif lat.present? && lon.present?
-    #  @crossings = Crossing.within(2, origin: [lat, lon])
-    #else
-    #  @crossings = @q.result(distinct: true).includes(city: [:prefecture], linked_railways: [])
-    #end
   end
 end
