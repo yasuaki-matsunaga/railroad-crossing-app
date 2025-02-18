@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'map_pages#top'
+  get 'railway_search/search', to: 'railway_search#search'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: %i[new create]
   get 'login', to: 'user_sessions#new'

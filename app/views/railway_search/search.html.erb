@@ -1,0 +1,5 @@
+<% @railways.each do |railway| %>
+  <li role="option" data-autocomplete-value="<%= railway.railway_id %>" data-autocomplete-label="<%= railway.railway_name %>">
+    <%= railway.railway_name %>
+  </li>
+<% end %>
