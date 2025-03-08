@@ -1,3 +1,37 @@
 //= require leaflet.markercluster
 //= require leaflet.markercluster.default
 @import "bootstrap";
+
+.container {
+  margin-top: 100px;
+}
+
+.flash-message {
+  position: fixed;
+  bottom: 20px;
+  right: 0;
+  left: 0;
+  width: 300px;
+  height: 30px;
+  margin: 0 auto;
+  border: 0;
+}
+
+.offcanvas-open {
+  margin-top: 100px;
+  margin-left: 10px;
+}
+
+.offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+  --bs-offcanvas-width: 300px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.current-location {
+  margin-bottom: 120px;
+  margin-right: 10px;
+}
+
+.railroad-candidate {
+  max-height: 300px;
+}

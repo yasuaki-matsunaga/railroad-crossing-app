@@ -1,4 +1,6 @@
 class RailwaySearchController < ApplicationController
+  skip_before_action :require_login, only: %i[search]
+
   def search
     @railways = Railway.where("railway_name like ?", "%#{params[:q]}%")
     respond_to do |format|

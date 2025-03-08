@@ -16,14 +16,26 @@
     
   </head>
 
-  <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
+  <body class="d-flex flex-column vh-100">
+    <% if request.path == '/' %>
+      <% if logged_in? %>
+        <%= render 'shared/root_header' %>
+      <% else %>
+        <%= render 'shared/before_login_root_header' %>
+      <% end %>
     <% else %>
-      <%= render 'shared/before_login_header' %>
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
     <% end %>
     <%= render 'shared/flash_message' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+    <% if request.path != '/' %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>

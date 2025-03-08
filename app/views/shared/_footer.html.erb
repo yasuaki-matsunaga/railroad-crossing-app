@@ -1,15 +1,18 @@
-<footer id='footer' class='footer-bottom'>
-    <div class='row'>
-      <div class='col-12 d-flex justify-content-between'>
-        <div class='copyright p-2'>
-          <p>Yasuaki Matsunaga portfolio 2024</p>
-        </div>
-        <div class='pages p-2'>
-          <%= link_to '使い方', page_path('how_to_use'), class: 'p-2' %>
-          <%= link_to '利用規約', page_path('service_terms'), class: 'p-2' %>
-          <%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'p-2' %>
-          <%= link_to 'お問い合わせ', new_contact_path, class: 'p-2' %>
-        </div>
+<footer id='footer' class='footer-bottom bg-light'>
+  <div class="container-fluid p-4">
+    <div class='row d-flex justify-content-center align-items-center flex-column flex-md-row text-center text-md-start'>
+      <div class="pages col-12 col-md-6 d-flex flex-column align-items-center text-secondary">
+        <%= link_to '使い方', page_path('how_to_use'), class: 'p-1 text-reset text-decoration-none' %>
+        <%= link_to '利用規約', page_path('service_terms'), class: 'p-1 text-reset text-decoration-none' %>
+        <%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'p-1 text-reset text-decoration-none' %>
+        <%= link_to 'お問い合わせ', new_contact_path, class: 'p-1 text-reset text-decoration-none' %>
+      </div>
+      <div class='copyright col-12 col-md-6 d-flex flex-column align-items-center text-secondary'>
+        <%= link_to '/', class: 'navbar-brand' do %>
+          <%= image_tag '仮logo.png' %>
+        <% end %>
+        <p class="mb-0">2024-2025 Yasuaki Matsunaga</p>
       </div>
     </div>
+  </div>
 </footer>

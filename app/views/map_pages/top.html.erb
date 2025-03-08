@@ -1,34 +1,70 @@
 <div class="position-relative">
-  <div class="search_form position-absolute top-0 start-50 translate-middle-x z-1">
-    <%= form_with model: @q, scope: :q, url: root_path, method: :get, class: 'd-flex justify-content-evenly p-2' do |f| %>
-      <%= f.select :city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow m-2', id: 'select-prefecture' %>
-      <%= f.select :city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow m-2', id: 'select-city' %>
-      <div data-controller="autocomplete" data-autocomplete-url-value="/railway_search/search" role="combobox" class="form-control shadow m-2">
-        <%= f.search_field :linked_railways_railway_name_cont, data: { autocomplete_target: 'input' } %>
-        <%= f.hidden_field :linked_railways_railway_name, data: { autocomplete_target: 'hidden' } %>
-        <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
+  <div class="position-absolute z-2 offcanvas-open">
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <div class="offcanvas offcanvas-start show border-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <div class="offcanvas-title" id="offcanvasScrollingLabel">
+        <%= link_to '/', class: 'navbar-brand mx-3' do %>
+          <%= image_tag '仮logo.png' %>
+        <% end %>
       </div>
-      <%= f.submit '検索', class: 'btn btn-warning shadow m-2' %>
-      <% Prefecture.all.each do |prefecture| %>
-        <template id="city-of-prefecture<%= prefecture.prefecture_id %>">
-          <%= f.select :city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow m-2', id: 'select-city' %>
-        </template>
-      <% end %>
-    <% end %>
-    <div class="current-location">
-      <button id="get-location-btn" class="btn btn-primary">近くのフミキリ</button>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <div class="search-form">
+        <%= form_with model: @q, scope: :q, url: root_path, method: :get, class: 'flex-column mt-5' do |f| %>
+          <%= f.select :city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow mt-3', id: 'select-prefecture' %>
+          <%= f.select :city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow mt-3', id: 'select-city' %>
+          <div data-controller="autocomplete" data-autocomplete-url-value="/railway_search/search" role="combobox">
+            <%= f.search_field :linked_railways_railway_name_cont, data: { autocomplete_target: 'input' }, class: 'form-control shadow mt-3', placeholder: '路線名を入力' %>
+            <%= f.hidden_field :linked_railways_railway_name, data: { autocomplete_target: 'hidden' } %>
+            <ul class="railroad-candidate list-group bg-white position-absolute list-unstyled fs-6 overflow-auto" data-autocomplete-target="results"></ul>
+          </div>
+          <%= f.submit '検索', class: 'btn btn-warning form-control shadow mt-3 w-50' %>
+          <% Prefecture.all.each do |prefecture| %>
+            <template id="city-of-prefecture<%= prefecture.prefecture_id %>">
+              <%= f.select :city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow mt-3', id: 'select-city' %>
+            </template>
+          <% end %>
+        <% end %>
+      </div>
+      <div class='pages d-flex flex-column mt-auto text-secondary'>
+        <%= link_to '使い方', page_path('how_to_use'), class: 'p-2 text-reset text-decoration-none' %>
+        <%= link_to '利用規約', page_path('service_terms'), class: 'p-2 text-reset text-decoration-none' %>
+        <%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'p-2 text-reset text-decoration-none' %>
+        <%= link_to 'お問い合わせ', new_contact_path, class: 'p-2 text-reset text-decoration-none' %>
+      </div>
+      <div class='copyright mt-4 text-secondary text-opacity-75'>
+        <p>Yasuaki Matsunaga portfolio</p>
+      </div>
     </div>
   </div>
-  <div class="z-0" id="map" style="width: 100%; height: 800px;"></div>
+
+  <div class="current-location position-absolute bottom-0 end-0 z-2">
+    <button id="get-location-btn" class="btn btn-warning shadow">
+      <i class="bi bi-crosshair2"></i>
+    </button>
+  </div>
+
+  <div class="position-relative vh-100">
+    <div id="map" class="position-absolute top-0 start-0 w-100 h-100 z-1"></div>
+  </div>
+
 </div>
 
 <script>
-//OpenStreetMapの表示
-  var map = L.map('map').setView([35.6895, 139.6917], 13);  //東京
+//Mapの表示
+  var map = L.map('map', {preferCanvas:true}).setView([35.6895, 139.6917], 13);  //東京
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  L.tileLayer('https://tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=abd7cf1c7d9d4b06b660b84796899098' , {
+    attribution: '&copy; <a href="https://www.thunderforest.com/">Thunderforest</a> contributors'
   }).addTo(map);
+
+  map.zoomControl.setPosition("bottomright");
 
   <% @crossings.each do |crossing| %>
     var marker = L.marker([<%= crossing.latitude %>, <%= crossing.longitude %>]).addTo(map).bindPopup('<%= link_to "詳細", crossing_path(crossing.crossing_id) %>').openPopup();
@@ -59,7 +95,7 @@
 //検索セレクトボックスを動的に変化させる
   document.addEventListener('turbo:load', function () {
     const selectPrefecture = document.getElementById("select-prefecture");
-    const defaultCitySelect = `<select class="form-select shadow m-2" id="select-city" name="q[city_city_id_eq]">
+    const defaultCitySelect = `<select class="form-select shadow mt-3" id="select-city" name="q[city_city_id_eq]">
     <option value>市町村</option>
     </select>`;
 
