@@ -16,5 +16,7 @@
     <%= f.file_field :crossing_image, class: "form-control", accept: 'image/*' %>
     <%= f.hidden_field :crossing_image_cache %>
   </div>
-  <%= f.submit nil, class: "btn btn-warning" %>
+  <div class="d-flex justify-content-center">
+    <%= f.submit nil, class: "btn btn-warning rounded-pill shadow px-4" %>
+  </div>
 <% end %>

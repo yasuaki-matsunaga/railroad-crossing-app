@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def show
     @crossing = Crossing.includes(city: [:prefecture], linked_railways: [], posts: []).find(params[:crossing_id])
-    @post = Post.find(params[:id])
+    @post = Post.includes(:user).find(params[:id])
     @tags = @post.tag_counts_on(:tags)
     @favorites = @post.favorites
     @comment = Comment.new

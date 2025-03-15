@@ -1,28 +1,21 @@
 <div class="container">
-  <%= render 'shared/crossing_info', crossing: @crossing %>
-  <div class="post-area d-flex justify-content-around">
-    <div class="crossing-image">
-      <%= image_tag @post.crossing_image.url %>
-    </div>
-    <div class="post-info">
-      <div class="post-title">
-        <h3><%= @post.title %></h3>
+  <div class="row pt-5">
+    <div class="post-body col-sm-12 col-md-8 col-lg-9">
+      <h3 class="post-title pb-3"><%= @post.title %></h3>
+      <div class="crossing-image d-flex justify-content-center pb-3">
+        <%= image_tag @post.crossing_image.url, class: 'img-fluid' %>
       </div>
-      <div class="tag-list">
-        <% @tags.each do |tag| %>
-          <span class="badge badge-info mr-2 mb-2">
-            <%= link_to "#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name) %>
-          </span>
-        <% end %>
-      </div>
-      <div>
+      <h6>投稿者：<%= @post.user.name %></h6>
+      <div class="favorite-edit-delete-area d-flex align-items-center">
         <% if current_user && current_user.own?(@post) %>
-          <div class='ms-auto'>
-            <%= link_to edit_crossing_post_path(@post.crossing_id, @post.id), class: "btn btn-link p-0", id: "button-edit-#{@post.id}" do %>
-              <i class="bi bi-pen-fill"></i>
+          <div class='ms-auto d-flex'>
+            <%= link_to edit_crossing_post_path(@post.crossing_id, @post.id), class: "btn btn-outline-info btn-sm rounded-pill px-2 d-flex align-items-center gap-2", id: "button-edit-#{@post.id}" do %>
+              <i class="bi bi-pencil-fill"></i>
+              <p>編集</p>
             <% end %>
-            <%= link_to crossing_post_path(@post.crossing_id, @post.id), class: "btn btn-link p-0", id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？' } do %>
-              <i class="bi bi-trash3-fill"></i>
+            <%= link_to crossing_post_path(@post.crossing_id, @post.id), class: "btn btn-outline-danger btn-sm rounded-pill px-2 mx-2 d-flex align-items-center gap-2", id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？' } do %>
+              <i class="bi bi-trash-fill"></i>
+              <p>削除</p>
             <% end %>
           </div>
         <% else %>
@@ -30,23 +23,35 @@
             <%= render 'favorites/favorite_button', post: @post, crossing: @crossing %>
           </div>
         <% end %>
-        <div>
+        <div class="mx-4">
           <p>いいね <%= @favorites.count %></p>
         </div>
       </div>
-      <div class="post-body">
+      <div class="post-body col-12 col-md-8 col-lg-9 mb-4">
         <p><%= @post.body %></p>
       </div>
-      <%= render 'comments/form', crossing: @crossing, comment: @comment, post: @post %>
-      <div class="row">
-      <div class="col-lg-12">
-        <table class="table">
-          <tbody id="table-comment">
-            <%= render @comments %>
-          </tbody>
-        </table>
+      <div class="tag-list mb-4">
+        <% @tags.each do |tag| %>
+          <span class="badge bg-dark-subtle mr-2 mb-2">
+            <%= link_to "#{tag.name}(#{tag.taggings_count})", posts_path(tag_name: tag.name), class: 'text-decoration-none text-secondary' %>
+          </span>
+        <% end %>
+      </div>
+      <div class="comment-area px-3">
+        <%= render 'comments/form', crossing: @crossing, comment: @comment, post: @post %>
+        <div class="row">
+          <div class="col-lg-12">
+            <table class="table">
+              <tbody id="table-comment">
+                <%= render @comments %>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="crossing-info-area col-12 col-md-4 col-lg-3">
+      <h5 class="mb-3">位置情報</h5>
+      <%= render 'shared/crossing_info', crossing: @crossing %>
     </div>
   </div>
-</div>

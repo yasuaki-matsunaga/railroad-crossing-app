@@ -12,19 +12,19 @@
           <li class='nav-item'>
             <%= link_to posts_path, class: 'btn btn-warning rounded-pill shadow d-flex align-items-center gap-2', role: 'button' do %>
               <i class="bi bi-file-post"></i>
-              <p class="mb-0">投稿一覧</p>
+              <p>投稿一覧</p>
             <% end %>
           </li>
           <li class='nav-item'>
             <%= link_to logout_path, class: 'btn btn-warning rounded-pill shadow d-flex align-items-center gap-2', data: { turbo_method: :delete } do %>
               <i class="bi bi-box-arrow-left"></i>
-              <p class="mb-0">ログアウト</p>
+              <p>ログアウト</p>
             <% end %>
           </li>
           <li class='nav-item'>
             <%= link_to profile_path, class: 'btn btn-warning rounded-pill shadow d-flex align-items-center gap-2' do %>
               <%= image_tag 'sample.jpg', class: 'rounded-circle', width: '25', height: '25' %>
-              <p class="mb-0"><%= current_user.name %></p>
+              <p><%= current_user.name %></p>
             <% end %>
           </li>
         </ul>

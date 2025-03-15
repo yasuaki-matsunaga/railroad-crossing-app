@@ -1,6 +1,20 @@
 //= require leaflet.markercluster
 //= require leaflet.markercluster.default
 @import "bootstrap";
+//=@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+//=@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+
+body {
+  //=font-family: 'Noto Sans JP', sans-serif !important;
+  //=font-family: 'M PLUS Rounded 1c', sans-serif !important;
+  font-family: 'M PLUS 1p', sans-serif !important;
+}
+
+p {
+  margin-bottom: 0 !important;
+  font-weight: 100 !important;
+}
 
 .container {
   margin-top: 100px;

@@ -10,13 +10,13 @@
     <td class="action">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
-          <%= link_to "#", class: "edit-comment-link" do %>
-            <i class="bi bi-pen-fill"></i>
+          <%= link_to "#", class: "edit-comment-link btn btn-outline-info btn-sm rounded-pill py-0 px-2" do %>
+            <i class="bi bi-pencil-fill"></i>
           <% end %>
         </li>
         <li class="list-inline-item">
-          <%= link_to crossing_post_comment_path(comment.post.crossing_id, comment.post_id, comment), class: "delete-comment-link", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
-            <i class="bi bi-trash3-fill"></i>
+          <%= link_to crossing_post_comment_path(comment.post.crossing_id, comment.post_id, comment), class: "delete-comment-link btn btn-outline-danger btn-sm rounded-pill py-0 px-2", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+            <i class="bi bi-trash-fill"></i>
           <% end %>
         </li>
       </ul>

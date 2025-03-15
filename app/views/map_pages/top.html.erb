@@ -15,8 +15,9 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
+      <h5 class="text-secondary">フミキリを探す</h5>
       <div class="search-form">
-        <%= form_with model: @q, scope: :q, url: root_path, method: :get, class: 'flex-column mt-5' do |f| %>
+        <%= form_with model: @q, scope: :q, url: root_path, method: :get, class: 'flex-column mt-2' do |f| %>
           <%= f.select :city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow mt-3', id: 'select-prefecture' %>
           <%= f.select :city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow mt-3', id: 'select-city' %>
           <div data-controller="autocomplete" data-autocomplete-url-value="/railway_search/search" role="combobox">
@@ -24,7 +25,7 @@
             <%= f.hidden_field :linked_railways_railway_name, data: { autocomplete_target: 'hidden' } %>
             <ul class="railroad-candidate list-group bg-white position-absolute list-unstyled fs-6 overflow-auto" data-autocomplete-target="results"></ul>
           </div>
-          <%= f.submit '検索', class: 'btn btn-warning form-control shadow mt-3 w-50' %>
+          <%= f.submit '検索', class: 'btn btn-warning form-control shadow mt-3 w-25' %>
           <% Prefecture.all.each do |prefecture| %>
             <template id="city-of-prefecture<%= prefecture.prefecture_id %>">
               <%= f.select :city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow mt-3', id: 'select-city' %>
@@ -39,7 +40,7 @@
         <%= link_to 'お問い合わせ', new_contact_path, class: 'p-2 text-reset text-decoration-none' %>
       </div>
       <div class='copyright mt-4 text-secondary text-opacity-75'>
-        <p>Yasuaki Matsunaga portfolio</p>
+        <p>2024-2025 Yasuaki Matsunaga</p>
       </div>
     </div>
   </div>
