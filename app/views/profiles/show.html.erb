@@ -1,14 +1,7 @@
 <div class="container">
-  <h2>プロフィール</h2>
+  <h2 class="mb-4">プロフィール</h2>
   <div class="row">
-    <nav class="navbar col-sm-12 col-md-4 col-lg-3">
-      <div class="collapse navbar-collapse d-flex flex-column text-secondary" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <%= link_to 'プロフィール', profile_path, class: 'p-2 text-reset text-decoration-none' %>
-          <%= link_to 'My投稿', '#', class: 'p-2 text-reset text-decoration-none' %>
-        </div>
-      </div>
-    </nav>
+    <%= render 'shared/account_page_side' %>
     <div class="profile col-sm-12 col-md-8 col-lg-9 mt-5">
       <p class="mb-3">ユーザーネーム：<%= @user.name %></p>
       <p class="mb-3">メールアドレス：<%= @user.email %></p>

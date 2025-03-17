@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
   resources :posts, only: %i[index]
+  resources :my_posts, only: %i[index]
 
   resources :crossings, only: %i[show] do
     resources :posts, only: %i[new create show edit update destroy] do

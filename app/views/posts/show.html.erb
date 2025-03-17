@@ -5,7 +5,7 @@
       <div class="crossing-image d-flex justify-content-center pb-3">
         <%= image_tag @post.crossing_image.url, class: 'img-fluid' %>
       </div>
-      <h6>投稿者：<%= @post.user.name %></h6>
+      <h6 class="text-secondary">投稿者：<%= @post.user.name %></h6>
       <div class="favorite-edit-delete-area d-flex align-items-center">
         <% if current_user && current_user.own?(@post) %>
           <div class='ms-auto d-flex'>
