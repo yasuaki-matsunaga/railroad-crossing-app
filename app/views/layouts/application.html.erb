@@ -33,6 +33,7 @@
     <%= render 'shared/flash_message' %>
     <main class="mb-auto">
       <%= yield %>
+      <%= yield(:js) %>
     </main>
     <% if request.path != '/' %>
       <%= render 'shared/footer' %>
