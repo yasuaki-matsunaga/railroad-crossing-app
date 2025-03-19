@@ -1,11 +1,11 @@
 <div class="position-relative">
   <div class="position-absolute z-2 offcanvas-open">
-    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+    <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" id="offcanvas-open">
       <i class="bi bi-search"></i>
     </button>
   </div>
 
-  <div class="offcanvas offcanvas-start show border-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas offcanvas-start border-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header">
       <div class="offcanvas-title" id="offcanvasScrollingLabel">
         <%= link_to '/', class: 'navbar-brand mx-3' do %>
@@ -63,6 +63,17 @@
 <% end %>
 
 <script>
+//ページを開いたとき、オフキャンバスを開いた状態にする。
+document.addEventListener('turbo:load', function () {
+  setTimeout(function () {
+    const offcanvasElement = document.getElementById("offcanvasScrolling");
+    if (offcanvasElement) {
+      const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+      offcanvas.show();
+    }
+  }, 100); // 少し遅らせる（100ms）
+});
+
 //Mapの表示
   var map = L.map('map', {preferCanvas:true}).setView([35.6895, 139.6917], 13);  //東京
 
