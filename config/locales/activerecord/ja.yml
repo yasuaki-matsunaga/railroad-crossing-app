@@ -18,3 +18,16 @@ ja:
         created_at: 作成日時
       comment:
         body: コメント
+      contact:
+        name: お名前
+        email: 返信用メールアドレス
+        subject: 件名
+        content: お問い合わせ内容
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: "を入力してください"
+            crossing_image:
+              blank: "をアップロードしてください"

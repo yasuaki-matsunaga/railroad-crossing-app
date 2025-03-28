@@ -7,9 +7,9 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to root_path, success: t('.success')
+      redirect_to root_path, success: t('user_sessions.create.success')
     else
-      flash.now[:danger] = t('.failure')
+      flash.now[:danger] = t('user_sessions.create.failure')
       render :new
     end
   end

@@ -3,6 +3,7 @@
     <div class="col-md-10 col-lg-8 mx-auto">
       <h2  class="mb-4">ユーザー登録</h2>
       <%= form_with model: @user do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3">
           <%= f.label :name, class: "form-label" %>
           <%= f.text_field :name, class: "form-control" %>

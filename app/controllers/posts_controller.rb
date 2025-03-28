@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new create edit update destroy]
+  before_action :require_login, only: %i[new create edit update destroy show]
+  before_action :set_crossing, only: %i[new create edit update]
 
   def index
     @q = Post.ransack(params[:q])
@@ -22,13 +23,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @crossing = Crossing.find(params[:crossing_id])
     @post = Post.new
   end
 
   def edit
     @post = current_user.posts.find(params[:id])
-    @crossing = Crossing.find(params[:crossing_id])
   end
 
   def create
@@ -44,7 +43,6 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    @crossing = Crossing.find(params[:crossing_id])
     if @post.update(post_params)
       redirect_to crossing_post_path(@crossing, @post),
                   success: t('defaults.flash_message.updated', item: Post.model_name.human)
@@ -62,6 +60,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_crossing
+    @crossing = Crossing.find(params[:crossing_id])
+  end
 
   def post_params
     params.require(:post)

@@ -30,7 +30,7 @@ ja:
       password_forget: パスワードをお忘れの方はこちら
     create:
       success: ログインしました
-      failure: ログインに失敗しました
+      failure: メールアドレスまたはパスワードが間違っています
     destroy:
       success: ログアウトしました
   users:
