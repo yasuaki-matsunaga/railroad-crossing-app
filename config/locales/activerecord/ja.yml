@@ -27,7 +27,5 @@ ja:
       models:
         post:
           attributes:
-            title:
-              blank: "を入力してください"
             crossing_image:
               blank: "をアップロードしてください"

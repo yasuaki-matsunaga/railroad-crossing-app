@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
-  validates :body, presence: true, length: { maximum: 65_535 }
+  validates :body, length: { maximum: 65_535 }
   validates :crossing_image, presence: true
 
   belongs_to :user
