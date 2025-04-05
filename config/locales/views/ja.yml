@@ -17,10 +17,10 @@ ja:
     password_reset: パスワードリセット
     flash_message:
       created: "%{item}を作成しました"
-      not_created: "%{item}を作成出来ませんでした"
+      not_created: "%{item}を作成できませんでした"
       require_login: ログインしてください
       updated: "%{item}を更新しました"
-      not_updated: "%{item}を更新出来ませんでした"
+      not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
   user_sessions:
     new:
