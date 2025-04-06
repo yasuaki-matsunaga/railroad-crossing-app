@@ -6,8 +6,9 @@
           <%= image_tag post.crossing_image.url, class: "card-img-top" %>
           <div class="card-body">
             <%= link_to post.title, crossing_post_path(post.crossing_id, post.id), class: 'card-title text-decoration-none fw-semibold' %>
+            <p class="text-secondary"><i class="bi bi-calendar-event-fill me-2"></i><%= l post.created_at, format: :default %></p>
             <div class="d-flex">
-              <p><%= post.user.name %></p>
+              <p class="text-secondary"><i class="bi bi-person-fill me-2"></i><%= post.user.name %></p>
               <% if current_user && current_user.own?(post) %>
                 <div class='ms-auto'>
                   <%= link_to edit_crossing_post_path(post.crossing_id, post.id), class: "btn btn-outline-info btn-sm rounded-pill py-0 px-2", id: "button-edit-#{post.id}" do %>
