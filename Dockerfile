@@ -13,6 +13,16 @@ RUN apt-get update -qq && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get update -qq && apt-get install -y \
+        nodejs \
+        build-essential \
+        libpq-dev \
+        imagemagick \
+    && npm install -g yarn \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN gem install bundler:2.3.17
 
 COPY Gemfile /railroad-crossing-app/Gemfile

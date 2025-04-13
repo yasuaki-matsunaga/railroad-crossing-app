@@ -21,8 +21,29 @@ def import_csv(model, file_path, attributes, unique_by:)
 end
 
 import_csv(
+  Prefecture,
+  'db/csv/prefecture.csv',
+  {
+  prefecture_id: 'pre_code',
+  prefecture_name: 'prefecture'
+  },
+  unique_by: :prefecture_id
+  )
+
+import_csv(
+  City,
+  'db/csv/city.csv',
+  {
+  city_id: 'city_code',
+  city_name: 'city',
+  prefecture_id: 'pre_code'
+  },
+  unique_by: :city_id
+  )
+
+import_csv(
   Crossing,
-  'db/csv/crossing_kanto.csv',
+  'db/csv/crossing.csv',
   {
   crossing_id: 'id',
   latitude: 'lat',
@@ -34,29 +55,8 @@ import_csv(
   )
 
 import_csv(
-  Prefecture,
-  'db/csv/prefecture_kanto.csv',
-  {
-  prefecture_id: 'pre_code',
-  prefecture_name: 'prefecture'
-  },
-  unique_by: :prefecture_id
-  )
-
-import_csv(
-  City,
-  'db/csv/city_kanto.csv',
-  {
-  city_id: 'city_code',
-  city_name: 'city',
-  prefecture_id: 'pre_code'
-  },
-  unique_by: :city_id
-  )
-
-import_csv(
   Railway,
-  'db/csv/railway_kanto.csv',
+  'db/csv/railway.csv',
   {
   railway_id: 'railway_id',
   railway_name: 'railway_name'
@@ -66,7 +66,7 @@ import_csv(
 
 import_csv(
   CrossingRailway,
-  'db/csv/crossing_railway_kanto.csv',
+  'db/csv/crossing_railway.csv',
   {
   crossing_id: 'id',
   railway_id: 'railway_id'

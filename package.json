@@ -4,5 +4,13 @@
   "main": "index.js",
   "repository": "git@github.com:yasuaki-matsunaga/railroad-crossing-app.git",
   "author": "yasuaki-matsunaga <hachimitsu1993@hotmail.co.jp>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.5",
+    "sass": "^1.86.3"
+  },
+  "scripts": {
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  }
 }
