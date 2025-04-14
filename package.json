@@ -11,7 +11,6 @@
     "sass": "^1.86.3"
   },
   "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-    "heroku-postbuild": "yarn build:css"
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }
