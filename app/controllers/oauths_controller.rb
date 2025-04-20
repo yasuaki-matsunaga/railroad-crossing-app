@@ -8,18 +8,17 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider].presence || 'google'
     if @user = login_from(provider)
-      redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+      redirect_to root_path, success: t('user_sessions.google_login.success')
     else
       begin
         @user = create_from(provider)
-        # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
 
-        reset_session # protect from session fixation attack
+        reset_session
         auto_login(@user)
-        redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+        redirect_to root_path, success: t('user_sessions.google_login.success')
       rescue
         reset_session
-        redirect_to root_path, alert: "Failed to login from #{provider.titleize}!"
+        redirect_to root_path, danger: t('user_sessions.google_login.failure')
       end
     end
   end

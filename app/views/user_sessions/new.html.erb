@@ -17,7 +17,7 @@
         </div>
       <% end %>
       <div class="d-flex justify-content-center mt-4">
-        <%= link_to auth_at_provider_path(provider: :google), class: 'btn btn-primary rounded-pill shadow d-flex align-items-center px-4 gap-2' do %>
+        <%= link_to auth_at_provider_path(:google), class: 'btn btn-primary rounded-pill shadow d-flex align-items-center px-4 gap-2', data: { turbo: false } do %>
           <i class="bi bi-google"></i>
           <p>Login with Google</p>
         <% end %>

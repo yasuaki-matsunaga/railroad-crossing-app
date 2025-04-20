@@ -9,7 +9,7 @@ gem 'bootstrap', '~> 5.3.0'
 
 gem 'jquery-rails'
 
-gem 'sorcery', "0.16.3"
+gem 'sorcery', '~> 0.17.0'
 
 gem 'rails-i18n', '~> 7.0.0'
 
