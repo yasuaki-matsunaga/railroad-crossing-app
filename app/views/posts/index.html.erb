@@ -1,7 +1,7 @@
 <div class="container">
   <h2>投稿一覧</h2>
   <div class="row">
-    <div class="search-area col-sm-12 col-md-4 col-lg-3">
+    <div class="search-area col-sm-12 col-md-4 col-lg-3 pb-5">
       <h5 class="mt-5">投稿を探す</h5>
       <div class="search_form">
         <%= form_with model: @q, scope: :q, url: posts_path, method: :get, class: 'flex-column mt-2' do |f| %>

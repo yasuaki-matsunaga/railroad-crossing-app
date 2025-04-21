@@ -54,3 +54,20 @@ p {
 .railroad-candidate {
   max-height: 300px;
 }
+
+@media (max-width: 576px) {
+
+  .navbar-nav .btn {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .navbar-nav .btn p {
+    font-size: 0.75rem !important;
+    margin: 0;
+  }
+
+  .navbar-nav .bi {
+    font-size: 1rem;
+  }
+}

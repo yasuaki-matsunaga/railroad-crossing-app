@@ -2,9 +2,9 @@
   <h2 class="mb-4">プロフィール</h2>
   <div class="row">
     <%= render 'shared/account_page_side' %>
-    <div class="profile col-sm-12 col-md-8 col-lg-9 mt-5">
+    <div class="profile col-sm-12 col-md-8 col-lg-9 my-3">
       <p class="mb-3">ユーザーネーム：<%= @user.name %></p>
-      <p class="mb-3">メールアドレス：<%= @user.email %></p>
+      <p class="mb-4">メールアドレス：<%= @user.email %></p>
       <%= link_to 'プロフィール編集', edit_profile_path, class: 'btn btn-secondary rounded-pill shadow mb-3' %>
       <%= link_to 'パスワード変更', new_password_reset_path, class: 'btn btn-secondary rounded-pill shadow mb-3' %>
     </div>
