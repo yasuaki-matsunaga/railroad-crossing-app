@@ -15,25 +15,25 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column">
-      <h5 class="text-secondary">フミキリを探す</h5>
+      <h5>フミキリを探す</h5>
       <div class="search-form">
         <%= form_with model: @q, scope: :q, url: root_path, method: :get, class: 'flex-column mt-2' do |f| %>
-          <%= f.select :city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow mt-3', id: 'select-prefecture' %>
-          <%= f.select :city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow mt-3', id: 'select-city' %>
+          <%= f.select :city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow mt-3 border-0', id: 'select-prefecture' %>
+          <%= f.select :city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow mt-3 border-0', id: 'select-city' %>
           <div data-controller="autocomplete" data-autocomplete-url-value="/railway_search/search" role="combobox">
-            <%= f.search_field :linked_railways_railway_name_cont, data: { autocomplete_target: 'input' }, class: 'form-control shadow mt-3', placeholder: '路線名を入力' %>
+            <%= f.search_field :linked_railways_railway_name_cont, data: { autocomplete_target: 'input' }, class: 'form-control shadow mt-3 border-0', placeholder: '路線名を入力' %>
             <%= f.hidden_field :linked_railways_railway_name, data: { autocomplete_target: 'hidden' } %>
             <ul class="railroad-candidate list-group bg-white position-absolute list-unstyled fs-6 overflow-auto" data-autocomplete-target="results"></ul>
           </div>
           <%= f.submit '検索', class: 'btn btn-warning form-control shadow mt-3 w-25' %>
           <% Prefecture.all.each do |prefecture| %>
             <template id="city-of-prefecture<%= prefecture.prefecture_id %>">
-              <%= f.select :city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow mt-3', id: 'select-city' %>
+              <%= f.select :city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow mt-3 border-0', id: 'select-city' %>
             </template>
           <% end %>
         <% end %>
       </div>
-      <div class='pages d-flex flex-column mt-auto text-secondary'>
+      <div class='pages d-flex flex-column mt-auto'>
         <%= link_to '使い方', page_path('how_to_use'), class: 'p-2 text-reset text-decoration-none' %>
         <%= link_to '利用規約', page_path('service_terms'), class: 'p-2 text-reset text-decoration-none' %>
         <%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'p-2 text-reset text-decoration-none' %>

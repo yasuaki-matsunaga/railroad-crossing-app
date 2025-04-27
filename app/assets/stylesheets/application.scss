@@ -1,28 +1,41 @@
 // Entry point for your Sass build
 //= require leaflet.markercluster
 //= require leaflet.markercluster.default
-$warning: #FACF5A;
-$info: #455D7A;
-$danger: #F95959;
+$warning: #FCE362;
+$info: #555A79;
+$danger: #E5605A;
+$light: #fffdf5;
+$secondary: #8F919D;
+$success: #51AAC7;
 
 @import "bootstrap/scss/bootstrap";
-//=@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
-//=@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+//@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+//@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
 @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
 
 body {
   //=font-family: 'Noto Sans JP', sans-serif !important;
   //=font-family: 'M PLUS Rounded 1c', sans-serif !important;
   font-family: 'M PLUS 1p', sans-serif !important;
+  background-color: $light;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $info;
 }
 
 p {
   margin-bottom: 0 !important;
   font-weight: 100 !important;
+  color: $info;
+}
+
+footer {
+  margin-top: 100px;
 }
 
 .container {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .flash-message {

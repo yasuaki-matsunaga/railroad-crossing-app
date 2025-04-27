@@ -8,7 +8,6 @@ db_data/
 .DS_Store
 public/uploads/post/
 .env
-db/csv/
 client_secret_270655054725-eb4ce711it0tfr5mihlhhgk993tlvghb.apps.googleusercontent.com.json
 
 # Ignore bundler config.

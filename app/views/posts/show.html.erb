@@ -2,7 +2,7 @@
   <div class="row pt-5">
     <div class="post-body col-sm-12 col-md-8 col-lg-9">
       <h3 class="post-title pb-3"><%= @post.title %></h3>
-      <div class="crossing-image d-flex justify-content-center pb-3">
+      <div class="crossing-image d-flex justify-content-center pb-3 bg-light">
         <%= image_tag @post.crossing_image.url, class: 'img-fluid' %>
       </div>
       <div class="contributor-date text-secondary">
@@ -18,7 +18,7 @@
             <% end %>
             <%= link_to crossing_post_path(@post.crossing_id, @post.id), class: "btn btn-outline-danger btn-sm rounded-pill px-2 mx-2 d-flex align-items-center gap-2", id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: '投稿を削除しますか？' } do %>
               <i class="bi bi-trash-fill"></i>
-              <p>削除</p>
+              <p class="text-danger">削除</p>
             <% end %>
           </div>
         <% else %>
