@@ -1,6 +1,10 @@
 <tr id="comment-<%= comment.id %>">
   <td style="width: 60px">
-    <%= image_tag "sample.jpg", width: "30", height: "30", class: "rounded" %>
+    <% if comment.user.avatar.present? %>
+      <%= image_tag comment.user.avatar.url, class: 'rounded-circle', width: '30', height: '30' %>
+    <% else %>
+      <%= image_tag 'sample.jpg', class: 'rounded-circle', width: '30', height: '30' %>
+    <% end %>
   </td>
   <td>
     <h3 class="small"><%= comment.user.name %></h3>
