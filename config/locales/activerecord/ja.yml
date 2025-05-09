@@ -8,6 +8,7 @@ ja:
         email: メールアドレス
         name: ユーザーネーム
         password: パスワード
+        avatar: プロフィール画像
         password_confirmation: パスワード確認
         created_at: 作成日時
       post:

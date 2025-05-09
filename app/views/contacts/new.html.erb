@@ -5,19 +5,19 @@
       <%= form_with model: @contact, local: true do |f| %>
         <div class="mb-3">
           <%= f.label :name, class: "form-label" %>
-          <%= f.text_field :name, class: "form-control" %>
+          <%= f.text_field :name, class: "form-control border-0 shadow" %>
         </div>
         <div class="mb-3">
           <%= f.label :email, class: "form-label" %>
-          <%= f.email_field :email, class: "form-control" %>
+          <%= f.email_field :email, class: "form-control border-0 shadow" %>
         </div>
         <div class="mb-3">
           <%= f.label :subject, class: "form-label" %>
-          <%= f.text_field :subject, class: "form-control" %>
+          <%= f.text_field :subject, class: "form-control border-0 shadow" %>
         </div>
         <div class="mb-4">
           <%= f.label :content, class: "form-label" %>
-          <%= f.text_area :content, class: "form-control" %>
+          <%= f.text_area :content, class: "form-control border-0 shadow" %>
         </div>
         <div class="d-flex justify-content-center">
           <%= f.submit "送信", class: "btn btn-warning rounded-pill shadow px-4" %>

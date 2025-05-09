@@ -6,19 +6,19 @@
         <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3">
           <%= f.label :name, class: "form-label" %>
-          <%= f.text_field :name, class: "form-control" %>
+          <%= f.text_field :name, class: "form-control border-0 shadow" %>
         </div>
         <div class="mb-3">
           <%= f.label :email, class: "form-label" %>
-          <%= f.email_field :email, class: "form-control" %>
+          <%= f.email_field :email, class: "form-control border-0 shadow" %>
         </div>
         <div class="mb-3">
           <%= f.label :password, class: "form-label" %>
-          <%= f.password_field :password, class: "form-control" %>
+          <%= f.password_field :password, class: "form-control border-0 shadow" %>
         </div>
         <div class="mb-4">
           <%= f.label :password_confirmation, class: "form-label" %>
-          <%= f.password_field :password_confirmation, class: "form-control" %>
+          <%= f.password_field :password_confirmation, class: "form-control border-0 shadow" %>
         </div>
         <div class="d-flex justify-content-center">
           <%= f.submit "登録", class: "btn btn-warning rounded-pill shadow px-4" %>
@@ -26,8 +26,8 @@
       <% end %>
       <div class="d-flex justify-content-center mt-4">
         <%= link_to auth_at_provider_path(provider: :google), class: 'btn btn-primary rounded-pill shadow d-flex align-items-center px-4 gap-2' do %>
-          <i class="bi bi-google"></i>
-          <p>Login with Google</p>
+          <i class="bi bi-google text-light"></i>
+          <p class="text-light">Login with Google</p>
         <% end %>
       </div>
     </div>
