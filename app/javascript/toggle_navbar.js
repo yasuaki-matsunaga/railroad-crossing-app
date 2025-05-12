@@ -1,13 +1,13 @@
+import { Collapse } from "bootstrap"
+
 document.addEventListener("turbo:load", () => {
-  const toggler = document.getElementById("navbar-toggler");
-  const collapseEl = document.getElementById("navbarNav");
+  const navbarElement = document.getElementById("navbarNav")
+  const togglerButton = document.getElementById("navbar-toggler")
 
-  if (toggler && collapseEl) {
-    const collapseInstance = bootstrap.Collapse.getOrCreateInstance(collapseEl, { toggle: false });
-
-    toggler.addEventListener("click", (e) => {
-      e.preventDefault();
-      collapseInstance.toggle();
-    });
+  if (togglerButton && navbarElement) {
+    togglerButton.addEventListener("click", () => {
+      const instance = Collapse.getOrCreateInstance(navbarElement)
+      instance.toggle()
+    })
   }
-});
+})

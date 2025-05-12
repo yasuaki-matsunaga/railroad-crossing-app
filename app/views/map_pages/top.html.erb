@@ -63,17 +63,6 @@
 <% end %>
 
 <script>
-//ページを開いたとき、オフキャンバスを開いた状態にする。
-document.addEventListener('turbo:load', function () {
-  setTimeout(function () {
-    const offcanvasElement = document.getElementById("offcanvasScrolling");
-    if (offcanvasElement) {
-      const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-      offcanvas.show();
-    }
-  }, 100); // 少し遅らせる（100ms）
-});
-
 //Mapの表示
   var map = L.map('map', {preferCanvas:true}).setView([35.6895, 139.6917], 13);  //東京
 
