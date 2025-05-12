@@ -7,13 +7,13 @@
           <li class='nav-item'>
             <%= link_to posts_path, class: 'btn btn-warning rounded-pill shadow d-flex align-items-center gap-2', role: 'button' do %>
               <i class="bi bi-file-post"></i>
-              <p class="mb-0">投稿一覧</p>
+              <span class="mb-0">投稿一覧</span>
             <% end %>
           </li>
           <li class='nav-item'>
             <%= link_to logout_path, class: 'btn btn-warning rounded-pill shadow d-flex align-items-center gap-2', data: { turbo_method: :delete } do %>
               <i class="bi bi-box-arrow-left"></i>
-              <p class="mb-0">ログアウト</p>
+              <span class="mb-0">ログアウト</span>
             <% end %>
           </li>
           <li class='nav-item'>
@@ -23,7 +23,7 @@
               <% else %>
                 <%= image_tag 'sample.jpg', class: 'rounded-circle', width: '25', height: '25' %>
               <% end %>
-              <p class="mb-0"><%= current_user.name %></p>
+              <span class="mb-0"><%= current_user.name %></span>
             <% end %>
           </li>
         </ul>

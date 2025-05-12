@@ -5,18 +5,18 @@
       <h5 class="mt-4">投稿を探す</h5>
       <div class="search_form">
         <%= form_with model: @q, scope: :q, url: posts_path, method: :get, class: 'flex-column mt-2' do |f| %>
-          <%= f.select :crossing_city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow mt-3 border-0', id: 'select-prefecture' %>
-          <%= f.select :crossing_city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow mt-3 border-0', id: 'select-city' %>
+          <%= f.select :crossing_city_prefecture_prefecture_id_eq, Prefecture.pluck(:prefecture_name, :prefecture_id), { include_blank: '都道府県' }, class: 'form-select shadow mt-3 border-0 text-secondary', id: 'select-prefecture' %>
+          <%= f.select :crossing_city_city_id_eq, [], { include_blank: '市町村' }, class: 'form-select shadow mt-3 border-0 text-secondary', id: 'select-city' %>
           <div data-controller="autocomplete" data-autocomplete-url-value="/railway_search/search" role="combobox">
-            <%= f.search_field :crossing_linked_railways_railway_name_cont, data: { autocomplete_target: 'input' }, class: 'form-control shadow mt-3 border-0', placeholder: '路線名を入力' %>
+            <%= f.search_field :crossing_linked_railways_railway_name_cont, data: { autocomplete_target: 'input' }, class: 'form-control shadow mt-3 border-0 text-secondary', placeholder: '路線名を入力' %>
             <%= f.hidden_field :crossing_linked_railways_railway_name, data: { autocomplete_target: 'hidden' } %>
             <ul class="railroad-candidate list-group bg-white position-absolute list-unstyled fs-6 overflow-auto" data-autocomplete-target="results"></ul>
           </div>
-          <%= f.search_field :user_name_or_title_or_body_cont, class: 'form-control shadow mt-3 border-0', placeholder: 'フリーワード' %>
-          <%= f.submit '検索', class: 'btn btn-warning shadow mt-3 w-25' %>
+          <%= f.search_field :user_name_or_title_or_body_cont, class: 'form-control shadow mt-3 border-0 text-secondary', placeholder: 'フリーワード' %>
+          <%= f.submit '検索', class: 'btn btn-warning shadow mt-3 w-25 text-info' %>
           <% Prefecture.all.each do |prefecture| %>
             <template id="city-of-prefecture<%= prefecture.prefecture_id %>">
-              <%= f.select :crossing_city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow mt-3 border-0', id: 'select-city' %>
+              <%= f.select :crossing_city_city_id_eq, prefecture.cities.pluck(:city_name, :city_id), { include_blank: '市町村' }, class: 'form-select shadow mt-3 border-0 text-secondary', id: 'select-city' %>
             </template>
           <% end %>
         <% end %>
@@ -32,6 +32,9 @@
     </div>
     <div class="main-area col-sm-12 col-md-8 col-lg-9">
       <%= render 'shared/post', posts: @posts %>
+      <div class="pagenation">
+        <%= paginate @posts, theme: 'bootstrap-5' %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 // Entry point for your Sass build
 //= require leaflet.markercluster
 //= require leaflet.markercluster.default
-$warning: #FCE362;
+$warning: #F2D431;//#FCE362
 $info: #555A79;
-$danger: #E5605A;
+$danger: #F5793B;//#E5605A
 $light: #fffdf5;
 $secondary: #8F919D;
 $primary: #51AAC7;
@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
   color: $info;
 }
 
-p {
+p, span {
   margin-bottom: 0 !important;
   font-weight: 100 !important;
   color: $info;

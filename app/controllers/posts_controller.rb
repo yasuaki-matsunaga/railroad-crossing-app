@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
                .includes(crossing: [city: [:prefecture], linked_railways: []], user: [])
+               .page(params[:page])
                .order(created_at: :desc)
     @tags = Post.tag_counts_on(:tags).most_used(20)
     if params[:tag_name]
