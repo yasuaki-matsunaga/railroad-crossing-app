@@ -9,3 +9,5 @@ pin "@popperjs/core", to: "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/di
 pin "bootstrap",        to: "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.esm.js", preload: true
 pin "stimulus-autocomplete" # @3.1.0
 pin "active_select_box"
+pin "toggle_navbar"
+pin "auto_open_offcanvas"
