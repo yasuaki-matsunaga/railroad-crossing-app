@@ -12,11 +12,15 @@
           <%= f.label :password %>
           <%= f.password_field :password, class: "form-control border-0 shadow" %>
         </div>
+        <div class="d-flex justify-content-center mb-2">
+          <%= f.label :remember_me, "ログイン状態を保持する", class:'me-2' %>
+          <%= f.check_box :remember_me %>
+        </div>
         <div class="d-flex justify-content-center">
           <%= f.submit "ログイン", class: "btn btn-warning rounded-pill shadow px-4", value: "ログイン" %>
         </div>
       <% end %>
-      <div class="d-flex justify-content-center mt-4">
+      <div class="d-flex justify-content-center mt-5">
         <%= link_to auth_at_provider_path(:google), class: 'btn btn-primary rounded-pill shadow d-flex align-items-center px-4 gap-2', data: { turbo: false } do %>
           <i class="bi bi-google text-light"></i>
           <p class="text-light">Login with Google</p>

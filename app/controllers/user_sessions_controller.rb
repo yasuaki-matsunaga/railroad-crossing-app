@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    @user = login(params[:email], params[:password])
+    @user = login(params[:email], params[:password], params[:remember])
 
     if @user
       redirect_to root_path, success: t('user_sessions.create.success')
@@ -18,6 +18,8 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
+    remember_me!
+    forget_me!
     logout
     redirect_to root_path, status: :see_other, success: t('.success')
   end
