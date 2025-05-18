@@ -20,11 +20,11 @@ body {
   background-color: $light;
 }
 
-h1, h2, h3, h4, h5, h6, label {
+h1, h2, h3, h4, h5, h6 {
   color: $info;
 }
 
-p, span {
+p, span, label {
   margin-bottom: 0 !important;
   font-weight: 100 !important;
   color: $info;
