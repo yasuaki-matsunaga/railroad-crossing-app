@@ -1,3 +1,4 @@
+<% content_for(:title, "#{@crossing.latitude}/#{@crossing.longitude}") %>
 <div class="container">
   <div class="pt-5">
     <%= render 'shared/crossing_info', crossing: @crossing %>

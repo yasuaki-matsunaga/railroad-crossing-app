@@ -1,5 +1,5 @@
 class OauthsController < ApplicationController
-  skip_before_action :require_login, raise: false
+  # skip_before_action :require_login, raise: false
 
   def oauth
     login_at(auth_params[:provider])

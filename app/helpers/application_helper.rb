@@ -1,4 +1,9 @@
 module ApplicationHelper
+  def page_title(title = '')
+    base_title = 'フミキリのちず'
+    title.present? ? "#{title} | #{base_title}" : base_title
+  end
+
   def privacy_policy
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     markdown.render(Rails.root.join('privacy_policy.md').read)
@@ -10,9 +15,11 @@ module ApplicationHelper
   end
 
   def default_meta_tags
+    base_title = 'フミキリのちず'
+    page_title = content_for?(:title) ? "#{content_for(:title)} | #{base_title}" : base_title
     {
-      site: 'フミキリのちず',
-      title: '踏切の位置検索と写真投稿',
+      site: base_title,
+      title: page_title,
       reverse: true,
       charset: 'utf-8',
       description: '踏切の位置情報の検索と踏切の写真投稿ができるWEBサイト',
@@ -21,7 +28,7 @@ module ApplicationHelper
       separator: '|',
       og: {
         site_name: :site,
-        title: :title,
+        title: '踏切の位置検索と写真投稿',
         description: :description,
         type: 'website',
         url: request.original_url,

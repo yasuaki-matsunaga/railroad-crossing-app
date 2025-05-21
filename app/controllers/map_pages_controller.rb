@@ -1,5 +1,5 @@
 class MapPagesController < ApplicationController
-  skip_before_action :require_login, only: %i[top]
+  # skip_before_action :require_login, only: %i[top]
 
   def top
     lat = params[:latitude].to_f

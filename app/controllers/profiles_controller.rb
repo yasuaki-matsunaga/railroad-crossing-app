@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :require_login
+  before_action :require_login, only: %i[edit, show, update]
   before_action :set_user
 
   def edit; end
