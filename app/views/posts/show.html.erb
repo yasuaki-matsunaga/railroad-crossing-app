@@ -27,8 +27,8 @@
             <%= render 'favorites/favorite_button', post: @post, crossing: @crossing %>
           </div>
         <% end %>
-        <div class="me-4">
-          <p>いいね <%= @favorites.count %></p>
+        <div class="me-4 mx-2" id="favorite-count-<%= @post.id %>">
+          <p>いいね <%= @post.favorites.count %></p>
         </div>
       </div>
       <div class="post-body col-12 col-md-8 col-lg-9 mb-4">

@@ -1,3 +1,9 @@
 <%= turbo_stream.replace "unfavorite-button-for-post-#{@post.id}" do %>
   <%= render 'favorites/favorite', post: @post, crossing: @crossing %>
 <% end %>
+
+<%= turbo_stream.replace "unfavorite-count-#{@post.id}" do %>
+  <div class="me-4 mx-2" id="favorite-count-<%= @post.id %>">
+    <p>いいね <%= @post.favorites.count %></p>
+  </div>
+<% end %>
