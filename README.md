@@ -44,22 +44,14 @@ OpenStreetMapというWEBアプリや個人のWEBサイトでは踏切の位置�
 コメント閲覧  
 コメント編集  
 コメント削除  
-踏切の位置情報と写真の位置情報記録をもとにスタンプラリー  
-
-＜本リリースまでにつける機能＞  
-目的地までの経路検索  
-経路上の踏切表示  
-踏切の特徴によって地図上の踏切アイコンを変える  
 
 ■ 機能の実装方針予定  
 Ruby on Rails　メインフレームワーク  
-Bootstrap/Tailwind　フロントエンドデザイン  
-MySQL　データベース  
+Bootstrap　フロントエンドデザイン  
+PostgreSQL　データベース  
 Overpass API　OpenStreetMapから踏切データを取得する  
 Leaflet.js　OpenStreetMapをベースに地図を表示するJavaScriptライブラリ  
-HTTParty/Faraday　API呼び出しを簡単に行うためのGem  
 Carrierwave　画像をアップロードするためのGem  
-exifr　画像からexif情報を取得するためのGem  
 sorcery　ユーザー登録・ログイン・ログアウト  
 
 ■ 画面遷移図  
