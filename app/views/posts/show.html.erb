@@ -4,7 +4,7 @@
     <div class="post-body col-sm-12 col-md-8 col-lg-9">
       <h3 class="post-title pb-3"><%= @post.title %></h3>
       <div class="crossing-image d-flex justify-content-center pb-3 bg-light">
-        <%= image_tag @post.crossing_image.url, class: 'img-fluid' %>
+        <%= image_tag @post.crossing_image.url, class: 'img-fluid rounded' %>
       </div>
       <div class="contributor-date text-secondary">
         <h6><i class="bi bi-person-fill me-2"></i>投稿者：<%= @post.user.name %></h6>
