@@ -46,9 +46,12 @@
     </div>
   </div>
 
-  <div class="current-location position-absolute bottom-0 end-0 z-2">
+  <div class="current-location position-absolute bottom-0 end-0 z-2 d-flex flex-column gap-2">
     <button id="get-location-btn" class="btn btn-warning shadow">
       <i class="bi bi-crosshair2"></i>
+    </button>
+    <button id="get-current-range-btn" class="btn btn-warning shadow">
+      <i class="bi bi-map-fill"></i>
     </button>
   </div>
 
@@ -61,6 +64,7 @@
 <% content_for :js do %>
   <%= javascript_import_module_tag "active_select_box" %>
   <%= javascript_include_tag "current_location", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "current_range", "data-turbo-track": "reload" %>
 <% end %>
 
 <script>
