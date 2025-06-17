@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.4"
+ruby '~> 3.1'
 
 gem 'pg'
 
@@ -23,7 +23,8 @@ gem 'kaminari', "1.2.2"
 
 gem 'bootstrap5-kaminari-views'
 
-gem 'ransack', "3.2.1"
+# gem 'ransack', "3.2.1"
+gem "ransack", ">= 4.1"
 
 gem 'config'
 
@@ -56,7 +57,8 @@ gem 'geokit-rails'
 gem 'gon'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.8", ">= 7.0.8.4"
+# gem "rails", "~> 7.0.8", ">= 7.0.8.4"
+gem "rails", "~> 7.1.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

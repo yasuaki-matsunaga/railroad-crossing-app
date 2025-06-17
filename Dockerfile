@@ -1,6 +1,6 @@
-FROM ruby:3.1.4
-ENV LANG C.UTF-8
-ENV TZ Asia/Tokyo
+FROM ruby:3.1
+ENV LANG=C.UTF-8
+ENV TZ=Asia/Tokyo
 
 RUN mkdir /railroad-crossing-app
 WORKDIR /railroad-crossing-app

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
                .order(created_at: :desc)
     @tags = Post.tag_counts_on(:tags).most_used(20)
     if params[:tag_name]
-      @posts = Post.tagged_with(params[:tag_name])
+      @posts = Post.tagged_with(params[:tag_name]).page(params[:page])
     end
   end
 
