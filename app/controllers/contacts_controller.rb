@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :require_login, only: %i[new, create]
+  before_action :require_login, only: %i[new create]
 
   def new
     @contact = Contact.new
