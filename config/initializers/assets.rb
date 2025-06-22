@@ -9,8 +9,8 @@ Rails.application.config.assets.version = "1.0"
 # 特に問題なければ後で削除
 # Rails.application.config.assets.precompile += %w(bootstrap.min.js popper.js)
 
-# 特に問題なければ後で削除
-# Rails.application.config.assets.paths << Rails.root.join('node_modules')
+# for use sass of bootstrap
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
