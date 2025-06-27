@@ -59,6 +59,7 @@ gem 'gon'
 # github dependabotにより追加
 gem "net-imap", ">= 0.4.20"
 gem "rexml", ">= 3.3.9"
+gem "rails-html-sanitizer", ">= 1.6.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 # gem "rails", "~> 7.0.8", ">= 7.0.8.4"
