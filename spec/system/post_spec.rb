@@ -36,9 +36,9 @@ RSpec.describe 'Posts', type: :system do
         end
       end
 
-      context 'タスクの一覧ページにアクセス' do
-        it 'すべてのユーザーのタスク情報が表示される' do
-          post_list = create_list(:post, 3)
+      context '投稿の一覧ページにアクセス' do
+        it 'すべてのユーザーの投稿情報が表示される' do
+          post_list = create_list(:post, 3, user: user, crossing: crossing)
           visit posts_path
           expect(page).to have_content post_list[0].title
           expect(page).to have_content post_list[1].title
@@ -128,7 +128,7 @@ RSpec.describe 'Posts', type: :system do
 
     end
 
-    describe '踏切投稿の編集' do
+    describe '踏切投稿の編集・削除' do
       context 'フォームの入力値が正常' do
         it '踏切投稿の編集が成功する' do
           visit edit_crossing_post_path(post.crossing_id, post.id)
@@ -183,8 +183,36 @@ RSpec.describe 'Posts', type: :system do
           attach_file 'フミキリフォト', Rails.root.join('spec/support/sample.jpg')
           click_button '更新'
           expect(page).to have_content 'タイトルを入力してください'
-          expect(page).to have_content "投稿を更新できませんでした"
+          expect(page).to have_content '投稿を更新できませんでした'
           expect(current_path).to eq edit_crossing_post_path(post.crossing_id, post.id)
+        end
+      end
+
+      context '投稿の削除' do
+        it '投稿の削除が成功する' do
+          visit crossing_post_path(post.crossing_id, post.id)
+          accept_confirm '投稿を削除しますか？' do
+            click_link '削除'
+          end
+          expect(page).to have_content '投稿を削除しました'
+          expect(current_path).to eq crossing_path(post.crossing_id)
+          expect(page).not_to have_content post.title
+        end
+      end
+
+      context '他ユーザーに関する制限' do
+        let(:other_user) { create(:user) }
+        let(:other_post) { create(:post, user: other_user, crossing: crossing) }
+
+        it '他人の投稿編集ページにアクセスすると拒否される' do
+          visit edit_crossing_post_path(other_post.crossing_id, other_post.id)
+          expect(current_path).not_to eq edit_crossing_post_path(other_post.crossing_id, other_post.id)
+          expect(page).to have_content('投稿が見つからないか、編集する権限がありません。')
+        end
+
+        it '他人の投稿には削除リンクが表示されない' do
+          visit crossing_post_path(other_post.crossing_id, other_post.id)
+          expect(page).not_to have_link '削除'
         end
       end
     end

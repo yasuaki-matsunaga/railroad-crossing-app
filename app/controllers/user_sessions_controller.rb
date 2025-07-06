@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
     else
       @user = User.new
       flash.now[:danger] = t('user_sessions.create.failure')
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

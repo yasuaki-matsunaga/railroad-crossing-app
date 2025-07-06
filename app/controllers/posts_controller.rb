@@ -29,6 +29,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to posts_path, danger: "投稿が見つからないか、編集する権限がありません。"
   end
 
   def create
