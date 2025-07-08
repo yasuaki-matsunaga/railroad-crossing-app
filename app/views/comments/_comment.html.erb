@@ -6,24 +6,15 @@
       <%= image_tag 'sample.jpg', class: 'rounded-circle', width: '30', height: '30' %>
     <% end %>
   </td>
-  <td>
+  <td class="w-100">
     <h3 class="small"><%= comment.user.name %></h3>
     <p><%= simple_format(comment.body) %></p>
   </td>
   <% if current_user && current_user.own?(comment) %>
-    <td class="action">
-      <ul class="list-inline justify-content-center" style="float: right;">
-        <li class="list-inline-item">
-          <%= link_to "#", class: "edit-comment-link btn btn-outline-info btn-sm rounded-pill py-0 px-2" do %>
-            <i class="bi bi-pencil-fill"></i>
-          <% end %>
-        </li>
-        <li class="list-inline-item">
-          <%= link_to crossing_post_comment_path(comment.post.crossing_id, comment.post_id, comment), class: "delete-comment-link btn btn-outline-danger btn-sm rounded-pill py-0 px-2", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
-            <i class="bi bi-trash-fill"></i>
-          <% end %>
-        </li>
-      </ul>
+    <td class="action text-nowrap align-middle">
+      <%= link_to crossing_post_comment_path(comment.post.crossing_id, comment.post_id, comment), class: "delete-comment-link btn btn-outline-danger btn-sm rounded-pill py-0", data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } do %>
+        <i class="bi bi-trash-fill"></i>
+      <% end %>
     </td>
   <% end %>
 </tr>
