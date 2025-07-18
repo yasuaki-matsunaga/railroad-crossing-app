@@ -56,6 +56,8 @@ gem 'geokit-rails'
 
 gem 'gon'
 
+gem 'gretel'
+
 # github dependabotにより追加
 gem "net-imap", ">= 0.4.20"
 gem "rexml", ">= 3.3.9"

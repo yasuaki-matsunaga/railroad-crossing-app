@@ -34,16 +34,12 @@ footer {
   margin-top: 100px;
 }
 
-.container {
-  margin-top: 150px;
-}
-
 .flash-message {
   position: fixed;
   bottom: 20px;
   right: 0;
   left: 0;
-  width: 350px;
+  width: 400px;
   height: 30px;
   margin: 0 auto;
   border: 0;
@@ -66,6 +62,10 @@ footer {
 
 .railroad-candidate {
   max-height: 300px;
+}
+
+.fixed-breadcrumb {
+  margin-top: 120px;
 }
 
 @media (max-width: 576px) {

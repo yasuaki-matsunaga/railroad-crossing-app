@@ -41,6 +41,11 @@
       <% end %>
     <% end %>
     <%= render 'shared/flash_message' %>
+    <% unless current_page?(root_path) %>
+      <div class="fixed-breadcrumb w-100 bg-light">
+        <%= breadcrumbs separator: " &rsaquo; " %>
+      </div>
+    <% end %>
     <main class="mb-auto">
       <%= yield %>
       <%= yield(:js) %>

@@ -1,0 +1,41 @@
+<% case params.values_at(:controller, :action) %>
+<% when ['users', 'new'] %>
+  <% breadcrumb :user_new %>
+
+<% when ['user_sessions', 'new'] %>
+  <% breadcrumb :login %>
+
+<% when ['password_resets', 'new'] %>
+  <% breadcrumb :password_reset %>
+
+<% when ['password_resets', 'edit'] %>
+  <% breadcrumb :password_edit, @user %>
+
+<% when ['crossings', 'show'] %>
+  <% breadcrumb :crossing, @crossing %>
+
+<% when ['posts', 'index'] %>
+  <% breadcrumb :posts %>
+
+<% when ['posts', 'show'] %>
+  <% breadcrumb :post, @post %>
+
+<% when ['posts', 'new'] %>
+  <% breadcrumb :post_new, @crossing %>
+
+<% when ['posts', 'edit'] %>
+  <% if params[:controller] == 'posts' && params[:action] == 'edit' && request.referer&.include?('/posts') %>
+    <% breadcrumb :post_edit, @post, from: :posts %>
+  <% else %>
+    <% breadcrumb :post_edit, @post %>
+  <% end %>
+
+<% when ['profiles', 'show'] %>
+  <% breadcrumb :profile %>
+
+<% when ['profiles', 'edit'] %>
+  <% breadcrumb :profile_edit %>
+
+<% when ['my_posts', 'index'] %>
+  <% breadcrumb :my_posts %>
+<% end %>
