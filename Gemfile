@@ -60,6 +60,8 @@ gem 'gretel'
 
 gem 'sitemap_generator'
 
+gem 'nokogiri', '>= 1.18.9'
+
 # github dependabotにより追加
 gem "net-imap", ">= 0.4.20"
 gem "rexml", ">= 3.3.9"
