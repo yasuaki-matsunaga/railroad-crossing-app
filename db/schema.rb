@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_05_16_091016) do
+ActiveRecord::Schema[7.1].define(version: 2025_09_26_215606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_16_091016) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "crossing_favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "crossing_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crossing_id"], name: "index_crossing_favorites_on_crossing_id"
+    t.index ["user_id", "crossing_id"], name: "index_crossing_favorites_on_user_id_and_crossing_id", unique: true
+    t.index ["user_id"], name: "index_crossing_favorites_on_user_id"
   end
 
   create_table "crossing_railways", force: :cascade do |t|
@@ -149,6 +159,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_05_16_091016) do
   add_foreign_key "cities", "prefectures", primary_key: "prefecture_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "crossing_favorites", "crossings", primary_key: "crossing_id"
+  add_foreign_key "crossing_favorites", "users"
   add_foreign_key "crossing_railways", "crossings", primary_key: "crossing_id"
   add_foreign_key "crossing_railways", "railways", primary_key: "railway_id"
   add_foreign_key "crossings", "cities", primary_key: "city_id"
