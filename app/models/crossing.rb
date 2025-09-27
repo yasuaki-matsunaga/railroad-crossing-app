@@ -8,5 +8,7 @@ class Crossing < ApplicationRecord
 
   has_many :posts, dependent: :destroy, foreign_key: :crossing_id, primary_key: :crossing_id, inverse_of: :crossing
 
+  has_many :crossing_favorites, dependent: :destroy
+
   acts_as_mappable default_units: :kms, lat_column_name: :latitude, lng_column_name: :longitude
 end

@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
+  has_many :crossing_favorites, dependent: :destroy
+  has_many :favorite_crossings, through: :crossing_favorites, source: :crossing
 
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
