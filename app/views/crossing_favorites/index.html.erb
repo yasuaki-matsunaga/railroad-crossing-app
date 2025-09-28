@@ -1,0 +1,34 @@
+<% content_for("お気に入りフミキリ") %>
+<%= render 'shared/breadcrumbs' %>
+<div class="container pt-5">
+  <h2 class="mb-4">お気に入りフミキリ</h2>
+  <div class="row">
+    <%= render 'shared/account_page_side' %>
+    <div class="main-area col-sm-12 col-md-8 col-lg-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">踏切名</th>
+            <th scope="col">都道府県</th>
+            <th scope="col">市町村</th>
+            <th scope="col">路線</th>
+            <th scope="col">緯度/経度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorite_crossings.each do |favorite_crossing| %>
+            <tr>
+              <td><%= link_to favorite_crossing.crossing_id, crossing_path(favorite_crossing.crossing_id) %></td>
+              <td><%= favorite_crossing.crossing.crossing_name %></td>
+              <td><%= favorite_crossing.crossing.city.prefecture.prefecture_name %></td>
+              <td><%= favorite_crossing.crossing.city.city_name %></td>
+              <td><%= favorite_crossing.crossing.linked_railways.first.railway_name %></td>
+              <td><%= link_to "#{favorite_crossing.crossing.latitude} / #{favorite_crossing.crossing.longitude}", "https://www.google.com/maps?q=#{favorite_crossing.crossing.latitude},#{favorite_crossing.crossing.longitude}", target: "_blank", rel: "noopener noreferrer" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

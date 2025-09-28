@@ -33,5 +33,5 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only: %i[create destroy]
-  resources :crossing_favorites, only: %i[create destroy]  
+  resources :crossing_favorites, only: %i[index create destroy]  
 end
