@@ -37,14 +37,14 @@ class User < ApplicationRecord
   end
 
   def crossing_favorite(crossing)
-    crossing_favorite_crossings << crossing
+    favorite_crossings << crossing
   end
 
   def crossing_unfavorite(crossing)
-    crossing_favorite_crossings.delete(post)
+    favorite_crossings.delete(crossing)
   end
 
-  def favorite?(crossing)
-    crossing_favorite_crossings.include?(crossing)
+  def crossing_favorite?(crossing)
+    favorite_crossings.include?(crossing)
   end
 end

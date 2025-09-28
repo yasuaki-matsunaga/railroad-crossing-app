@@ -1,0 +1,9 @@
+<% if current_user %>
+  <% if current_user.crossing_favorite?(crossing) %>
+    <%= render 'crossing_favorites/crossing_unfavorite', crossing: crossing %>
+  <% else %>
+    <%= render 'crossing_favorites/crossing_favorite', crossing: crossing %>
+  <% end %>
+<% else %>
+  <%= link_to 'ログインしてお気に入りに追加', login_path, class: 'btn btn-outline-primary btn-sm' %>
+<% end %>

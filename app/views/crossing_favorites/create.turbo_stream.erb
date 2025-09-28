@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "favorite-button-for-crossing-#{@crossing.id}" do %>
+  <%= render 'crossing_favorites/crossing_unfavorite', crossing: @crossing %>
+<% end %>

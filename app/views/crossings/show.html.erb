@@ -6,6 +6,7 @@
   </div>
   <div class="d-flex justify-content-center mb-5">
     <%= link_to 'このフミキリについて投稿する', new_crossing_post_path(@crossing.crossing_id), class: 'btn btn-warning rounded-pill shadow px-4' %>
+    <%= render 'crossing_favorites/crossing_favorite_button', crossing: @crossing %>
   </div>
   <h3>このフミキリの投稿</h3>
   <%= render 'shared/post', posts: @posts %>

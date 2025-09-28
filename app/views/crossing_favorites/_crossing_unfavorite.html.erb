@@ -1,0 +1,3 @@
+<%= link_to crossing_favorite_path(current_user.crossing_favorites.find_by(crossing_id: crossing.crossing_id)), id: "unfavorite-button-for-crossing-#{crossing.crossing_id}", data: { turbo_method: :delete } do %>
+  <p class="btn btn-outline-primary btn-sm">お気に入り登録解除</p>
+<% end %>
