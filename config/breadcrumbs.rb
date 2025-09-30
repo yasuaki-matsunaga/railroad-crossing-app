@@ -62,6 +62,11 @@ crumb :my_posts do
   parent :profile
 end
 
+crumb :crossing_favorites do
+  link "お気に入りフミキリ", crossing_favorites_path
+  parent :profile
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
