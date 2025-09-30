@@ -5,7 +5,7 @@
   <div class="row">
     <%= render 'shared/account_page_side' %>
     <div class="main-area col-sm-12 col-md-8 col-lg-9">
-      <table class="table">
+      <table class="table table-hover table-light table-borderless table-striped">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -14,17 +14,19 @@
             <th scope="col">市町村</th>
             <th scope="col">路線</th>
             <th scope="col">緯度/経度</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <% @favorite_crossings.each do |favorite_crossing| %>
             <tr>
-              <td><%= link_to favorite_crossing.crossing_id, crossing_path(favorite_crossing.crossing_id) %></td>
-              <td><%= favorite_crossing.crossing.crossing_name %></td>
-              <td><%= favorite_crossing.crossing.city.prefecture.prefecture_name %></td>
-              <td><%= favorite_crossing.crossing.city.city_name %></td>
-              <td><%= favorite_crossing.crossing.linked_railways.first.railway_name %></td>
-              <td><%= link_to "#{favorite_crossing.crossing.latitude} / #{favorite_crossing.crossing.longitude}", "https://www.google.com/maps?q=#{favorite_crossing.crossing.latitude},#{favorite_crossing.crossing.longitude}", target: "_blank", rel: "noopener noreferrer" %></td>
+              <td class="td_vertical_align_middle"><%= link_to favorite_crossing.crossing_id, crossing_path(favorite_crossing.crossing_id) %></td>
+              <td class="td_vertical_align_middle"><%= favorite_crossing.crossing.crossing_name %></td>
+              <td class="td_vertical_align_middle"><%= favorite_crossing.crossing.city.prefecture.prefecture_name %></td>
+              <td class="td_vertical_align_middle"><%= favorite_crossing.crossing.city.city_name %></td>
+              <td class="td_vertical_align_middle"><%= favorite_crossing.crossing.linked_railways.first.railway_name %></td>
+              <td class="td_vertical_align_middle"><%= link_to "#{favorite_crossing.crossing.latitude} / #{favorite_crossing.crossing.longitude}", "https://www.google.com/maps?q=#{favorite_crossing.crossing.latitude},#{favorite_crossing.crossing.longitude}", target: "_blank", rel: "noopener noreferrer" %></td>
+              <td class="td_vertical_align_middle"><%= render 'crossing_favorites/crossing_unfavorite', crossing: favorite_crossing %></td>
             </tr>
           <% end %>
         </tbody>
