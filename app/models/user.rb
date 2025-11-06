@@ -47,4 +47,6 @@ class User < ApplicationRecord
   def crossing_favorite?(crossing)
     favorite_crossings.include?(crossing)
   end
+
+  
 end

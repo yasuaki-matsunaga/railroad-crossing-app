@@ -1,0 +1,18 @@
+<% content_for(:title, t('.title')) %>
+<%= render 'shared/breadcrumbs' %>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-8 col-lg-6 mx-auto">
+      <h2 class="mb-4">認証メールを再送</h2>
+      <%= form_with url: resend_activation_path, method: :post, local: true do %>
+        <div class="mb-3">
+          <%= label_tag :email, 'メールアドレス', class: 'form-label' %>
+          <%= email_field_tag :email, params[:email], class: 'form-control border-0 shadow', required: true %>
+        </div>
+        <div class="d-flex justify-content-center">
+          <%= submit_tag '再送する', class: 'btn btn-warning rounded-pill shadow px-4' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

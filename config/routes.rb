@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     end
   end
   get 'before_activate', to: 'users#before_activate'
+  get  'new_activation', to: 'users#new_activation'
+  post 'resend_activation', to: 'users#resend_activation'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
